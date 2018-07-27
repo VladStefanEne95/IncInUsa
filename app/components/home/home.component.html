@@ -1,0 +1,67 @@
+<ActionBar class="action-bar">
+    <Label class="action-bar-title" text=""></Label>
+</ActionBar>
+
+<ScrollView>
+	<StackLayout orientation="vertical">
+		<StackLayout id="step2">
+			<StackLayout>
+				<GridLayout rows="*" columns="50,*, 50" class="topmenu-grid">
+					<Label class="topmenu-back" row="0" col="0" text="<" ></Label>
+					<StackLayout row="0" col="1">
+						<Label class="topmenu-step" text="STEP 2/5" ></Label>
+						<Label class="topmenu-title" text="Personal information" ></Label>
+					</StackLayout>
+					<Label class="topmenu-logo" row="0" col="2" text="LOGO" ></Label>
+				</GridLayout>
+			</StackLayout>
+
+			<GridLayout rows="*" columns="*,*" class="grid-form">
+				<Label class="form-label" row="0" col="0" [text]="test" ></Label>
+				<TextField class="form-text" row="0" col="1" [(ngModel)]="firstName" hint="Enter first name" ></TextField>
+			</GridLayout>
+			<GridLayout rows="*" columns="*,*" class="grid-form">
+				<Label class="form-label" row="0" col="0" text="Last name" ></Label>
+				<TextField class="form-text" row="0" col="1" [(ngModel)]="lastName" hint="Enter last name" ></TextField>
+			</GridLayout>
+			<GridLayout rows="*" columns="*,*" class="grid-form">
+				<Label class="form-label" row="0" col="0" text="Email" ></Label>
+				<TextField class="form-text" row="0" col="1" [(ngModel)]="email" hint="Enter email"  keyboardType="email"
+				autocorrect="false" ></TextField>
+			</GridLayout>
+
+			<Button text="NEXT" class="green-button" (tap)="step3()"  ></Button>
+		</StackLayout>
+
+
+	<StackLayout id="step3">
+			<StackLayout>
+				<GridLayout rows="*" columns="50,*, 50" class="topmenu-grid">
+					<Label class="topmenu-back" row="0" col="0" text="<" ></Label>
+					<StackLayout row="0" col="1">
+						<Label class="topmenu-step" text="STEP 3/5" ></Label>
+						<Label class="topmenu-title" text="Personal information" ></Label>
+					</StackLayout>
+					<Label class="topmenu-logo" row="0" col="2" text="LOGO" ></Label>
+				</GridLayout>
+			</StackLayout>
+
+			<GridLayout rows="*" columns="*,*" class="grid-form">
+				<Label class="form-label" row="0" col="0" [text]="test" ></Label>
+				<TextField class="form-text" row="0" col="1" [(ngModel)]="firstName" hint="Enter first name" ></TextField>
+			</GridLayout>
+			<GridLayout rows="*" columns="*,*" class="grid-form">
+				<Label class="form-label" row="0" col="0" text="Last name" ></Label>
+				<TextField class="form-text" row="0" col="1" [(ngModel)]="lastName" hint="Enter last name" ></TextField>
+			</GridLayout>
+			<GridLayout rows="*" columns="*,*" class="grid-form">
+				<Label class="form-label" row="0" col="0" text="Email" ></Label>
+				<TextField class="form-text" row="0" col="1" [(ngModel)]="email" hint="Enter email"  keyboardType="email"
+				autocorrect="false" ></TextField>
+			</GridLayout>
+
+			<Button text="NEXT" class="green-button" (tap)="step2()"  ></Button>
+		</StackLayout>
+	</StackLayout>
+
+</ScrollView>

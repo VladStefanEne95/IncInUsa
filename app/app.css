@@ -1,0 +1,85 @@
+/*
+In NativeScript, the app.css file is where you place CSS rules that
+you would like to apply to your entire application. Check out
+http://docs.nativescript.org/ui/styling for a full list of the CSS
+selectors and properties you can use to style UI components.
+
+/*
+In many cases you may want to use the NativeScript core theme instead
+of writing your own CSS rules. For a full list of class names in the theme
+refer to http://docs.nativescript.org/ui/theme.
+*/
+@import '~nativescript-theme-core/css/core.light.css';
+
+/*
+For example, the following CSS rule changes the font size of all UI
+components that have the btn class name.
+*/
+.btn {
+    font-size: 18;
+}
+.btn {
+    font-size: 18;
+}
+.grid-form {
+    vertical-align: top;
+    border-bottom-color: #e5e5e5;
+    border-bottom-width: 1;
+    padding-top: 15;
+    padding-bottom: 8;
+}
+.form-text {
+    border-width: 0 0 1 0;
+    border-bottom-color: white;
+    vertical-align: top;
+    padding-top: 0;
+    text-align: right;
+    margin-right: 20;
+    font-size: 16;
+}
+.form-text-left {
+    border-width: 0 0 1 0;
+    border-bottom-color: white;
+    vertical-align: top;
+    padding-top: 0;
+    text-align: left;
+    margin-left: 20;
+	font-size: 16;
+	color:white;
+}
+.form-label {
+	margin-left:20;
+	padding-left: 0;
+    font-size: 16;
+}
+.topmenu-grid {
+    background-color: #0675e1;
+    padding-top: 15;
+	padding-bottom: 15;
+	margin-bottom:20;
+    color: white;
+}
+.topmenu-back {
+    text-align: center;
+    vertical-align: center;
+    font-size: 20;
+}
+.topmenu-title {
+    font-size: 20;
+}
+.topmenu-step {
+    color:#d9d9d9;
+}
+.topmenu-logo {
+    vertical-align: center;
+}
+.green-button {
+    margin-top: 40;
+    width: 200;
+    color: white;
+    background-color: #33cc00;
+    border-radius: 10;
+}
+.hide {
+	visibility: collapsed;
+}

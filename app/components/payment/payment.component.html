@@ -1,0 +1,17 @@
+
+<ActionBar class="action-bar">
+    <Label class="action-bar-title" text="Payment"></Label>
+</ActionBar>
+ 
+<StackLayout class="page" style="background-color:black;">
+	<CreditCardView #card></CreditCardView>
+	<TextField class="form-text-left" [(ngModel)]="cardNumber" hint="Number"  keyboardType="number"
+	autocorrect="false" ></TextField>
+	<TextField class="form-text-left"  [(ngModel)]="cardMonth"  hint="Month"  keyboardType="number"
+	autocorrect="false" ></TextField>
+	<TextField class="form-text-left" [(ngModel)]="cardYear" hint="Year"  keyboardType="number"
+	autocorrect="false" ></TextField>
+	<TextField class="form-text-left" [(ngModel)]="cardCvc" hint="Cvc"  keyboardType="number"
+	autocorrect="false" ></TextField>
+	<Button text="Submit" (tap)="submit($event)"></Button>
+</StackLayout>
