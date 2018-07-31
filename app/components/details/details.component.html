@@ -1,0 +1,44 @@
+
+
+<ScrollView>
+	<StackLayout orientation="vertical">
+		<StackLayout>
+			<StackLayout>
+				<GridLayout rows="*" columns="50,*, 50" class="topmenu-grid">
+					<Label class="topmenu-back" row="0" col="0" text="<" ></Label>
+					<StackLayout row="0" col="1">
+						<Label class="topmenu-step" text="STEP 1/5" ></Label>
+						<Label class="topmenu-title" text="Company details" ></Label>
+					</StackLayout>
+					<Label class="topmenu-logo" row="0" col="2" text="LOGO" ></Label>
+				</GridLayout>
+			</StackLayout>
+
+			<Label class="details-title capitalize" text="Company name"></Label>
+			<GridLayout rows="*" columns="*,*" class="grid-form-details">
+					<TextField style="text-align:left; padding-right:0;" class="form-text" row="0" col="0" [(ngModel)]="companyName" hint="Company name" ></TextField>
+					<Label style="padding-left:0; text-align:left;" class="form-label" row="0" col="1" [text]='companyType' ></Label>
+			</GridLayout>
+
+			<Label style="margin-top:25" class="details-title capitalize" text="Incorporation structure"></Label>
+			<GridLayout  rows="*,*" columns="60,*">
+				<CheckBox #CB1 id="CB1" text="" row="0" col="0" class="radio-button" boxType="circle" ngDefaultControl></CheckBox>
+				<StackLayout class="right-description" row="0" col="1">
+					<Label (tap)="firstCheckboxTap()" class="top-right-description" text="Limited Liability Company (LLC)"></Label>
+					<Label (tap)="firstCheckboxTap()" class="bottom-right-description" text="A limited liability company (LLC) is the United States of America-specific form of a private limited company. It is a business structure that combines the pass-through taxation of a partnership or sole proprietorship with the limited liability of a corporation."  textWrap="true"></Label>
+				</StackLayout>
+
+				<CheckBox #CB2 id="CB2" text="" row="1" col="0" boxType="circle" class="radio-button" ngDefaultControl></CheckBox>
+				<StackLayout class="right-description" row="1" col="1">
+						<Label (tap)="secondCheckboxTap()" class="top-right-description" text="C Corporation (Inc)"></Label>
+						<Label (tap)="secondCheckboxTap()" class="bottom-right-description" text="A C corporation, under United States federal income tax law, refers to any corporation that is taxed separately from its owners."  textWrap="true"></Label>
+				</StackLayout>
+			</GridLayout>
+
+			<Label text="How do I know which one to choose?" class="blue-text" (tap)="buttonTapes()"></Label>
+
+			<Button text="NEXT" class="green-button" (tap)="step3()" ></Button>
+		</StackLayout>
+	</StackLayout>
+
+</ScrollView>

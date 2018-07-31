@@ -10,6 +10,8 @@ import { Observable } from "rxjs";
 import {Page} from "ui/page";
 const imageSourceModule = require("tns-core-modules/image-source")
 
+var appSettings = require("application-settings");
+
 @Component({
     selector: "Fileupload",
     moduleId: module.id,
@@ -41,6 +43,7 @@ export class FileuploadComponent implements OnInit {
     }
 
     private startSelection(context) {
+		appSettings.setString("stringKey", "String value");  // Writing
         let that = this;
 		let session = bghttp.session("image-upload");
         context

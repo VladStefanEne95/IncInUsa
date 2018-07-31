@@ -5,6 +5,7 @@ import {View} from "ui/core/view";
 import { CreditCardView, Card, Stripe } from 'nativescript-stripe';
 import { EventData } from 'data/observable';
 import { PaymentService } from './../../services/payment/payment.service'
+var appSettings = require("application-settings");
 
 
 @Component({
@@ -32,7 +33,10 @@ export class PaymentComponent implements OnInit {
 	//	let cardView = <CreditCardView>this.card.nativeElement;
 	//	let card = cardView.card;
 		const stripe = new Stripe('pk_test_JAgczktWX8jchji0bgHIHjOe');
+		var value = appSettings.getString("stringKey", "No string value"); // Reading
+		// will return "No string value" if there is no value for "stringKey"
 		
+		console.log(value)
 		console.log(this.cardNumber);
 		console.log(this.cardMonth);
 		console.log(this.cardYear);

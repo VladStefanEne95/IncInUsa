@@ -4,64 +4,19 @@
 
 <ScrollView>
 	<StackLayout orientation="vertical">
-		<StackLayout id="step2">
-			<StackLayout>
-				<GridLayout rows="*" columns="50,*, 50" class="topmenu-grid">
-					<Label class="topmenu-back" row="0" col="0" text="<" ></Label>
-					<StackLayout row="0" col="1">
-						<Label class="topmenu-step" text="STEP 2/5" ></Label>
-						<Label class="topmenu-title" text="Personal information" ></Label>
-					</StackLayout>
-					<Label class="topmenu-logo" row="0" col="2" text="LOGO" ></Label>
-				</GridLayout>
-			</StackLayout>
-
-			<GridLayout rows="*" columns="*,*" class="grid-form">
-				<Label class="form-label" row="0" col="0" [text]="test" ></Label>
-				<TextField class="form-text" row="0" col="1" [(ngModel)]="firstName" hint="Enter first name" ></TextField>
-			</GridLayout>
-			<GridLayout rows="*" columns="*,*" class="grid-form">
-				<Label class="form-label" row="0" col="0" text="Last name" ></Label>
-				<TextField class="form-text" row="0" col="1" [(ngModel)]="lastName" hint="Enter last name" ></TextField>
-			</GridLayout>
-			<GridLayout rows="*" columns="*,*" class="grid-form">
-				<Label class="form-label" row="0" col="0" text="Email" ></Label>
-				<TextField class="form-text" row="0" col="1" [(ngModel)]="email" hint="Enter email"  keyboardType="email"
-				autocorrect="false" ></TextField>
-			</GridLayout>
-
-			<Button text="NEXT" class="green-button" (tap)="step3()"  ></Button>
+		<StackLayout style="height:50; background-color:#8C12D2;"></StackLayout>
+		<StackLayout class="main-page-gradient">
+				<StackLayout class="container">
+					<Image style="font-weight:300;" class="main-image" src="https://play.nativescript.org/dist/assets/img/NativeScript_logo.png"></Image>
+					<Label textWrap="true" text="Incorporate your US company in under"></Label>
+					<Label style="font-weight:700; margin-bottom:20;" text="5 minutes"></Label>
+					<Label style="font-size:14; font-weight:600;" class="capitalize" text="starting from $595.00"></Label>
+				</StackLayout>
 		</StackLayout>
-
-
-	<StackLayout id="step3">
-			<StackLayout>
-				<GridLayout rows="*" columns="50,*, 50" class="topmenu-grid">
-					<Label class="topmenu-back" row="0" col="0" text="<" ></Label>
-					<StackLayout row="0" col="1">
-						<Label class="topmenu-step" text="STEP 3/5" ></Label>
-						<Label class="topmenu-title" text="Personal information" ></Label>
-					</StackLayout>
-					<Label class="topmenu-logo" row="0" col="2" text="LOGO" ></Label>
-				</GridLayout>
-			</StackLayout>
-
-			<GridLayout rows="*" columns="*,*" class="grid-form">
-				<Label class="form-label" row="0" col="0" [text]="test" ></Label>
-				<TextField class="form-text" row="0" col="1" [(ngModel)]="firstName" hint="Enter first name" ></TextField>
-			</GridLayout>
-			<GridLayout rows="*" columns="*,*" class="grid-form">
-				<Label class="form-label" row="0" col="0" text="Last name" ></Label>
-				<TextField class="form-text" row="0" col="1" [(ngModel)]="lastName" hint="Enter last name" ></TextField>
-			</GridLayout>
-			<GridLayout rows="*" columns="*,*" class="grid-form">
-				<Label class="form-label" row="0" col="0" text="Email" ></Label>
-				<TextField class="form-text" row="0" col="1" [(ngModel)]="email" hint="Enter email"  keyboardType="email"
-				autocorrect="false" ></TextField>
-			</GridLayout>
-
-			<Button text="NEXT" class="green-button" (tap)="step2()"  ></Button>
-		</StackLayout>
+		
+		<Label style="width:300;margin-top:50; text-align:center;" textWrap="true" text="Have your passport or national ID ready before starting the process."></Label>
+		<Button style="margin-top:10;" text="start new incorporation" class="green-button capitalize" (tap)="step2()"  ></Button>
+		<Label style="text-align:center;color:#0675e1;margin-top:20; margin-bottom:30;font-size:18;" (tap)="oldInc()" text="I already have an application number."></Label>
 	</StackLayout>
 
 </ScrollView>

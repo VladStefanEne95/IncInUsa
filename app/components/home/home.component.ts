@@ -1,5 +1,9 @@
 import { Component, OnInit,ViewChild, ElementRef } from "@angular/core";
 import {Page} from "ui/page";
+import { Router } from '@angular/router';
+
+const plugin = require("nativescript-uuid");
+var appSettings = require("application-settings");
 
 @Component({
     selector: "Home",
@@ -8,9 +12,10 @@ import {Page} from "ui/page";
 })
 export class HomeComponent implements OnInit {
 
+	companyUuid :string;
 	page;
 	//@ViewChild("step2") step2: ElementRef;
-    constructor(page: Page) {
+    constructor(page: Page, private router: Router) {
 		// Use the component constructor to inject providers.
 		page.actionBarHidden = true;
 		this.page = page;
@@ -18,17 +23,19 @@ export class HomeComponent implements OnInit {
     }
 
     ngOnInit(): void {
-        // Init your component properties here.
+		// Init your component properties here.
+		this.companyUuid = appSettings.getString("companyUuid", "");
 	}
-	step3(page: Page): void{
-		console.log("aici");
-		this.page.addCss("#step2 {visibility: collapsed}");
-		this.page.addCss("#step3 {visibility: visible}");
+	oldInc() {
+		alert("good for you");
 	}
 
 	step2(page: Page): void{
-		console.log("aici");
-		this.page.addCss("#step3 {visibility: collapsed}");
-		this.page.addCss("#step2 {visibility: visible}");
+		var uuid = plugin.getUUID();
+		appSettings.setString("companyUuid", uuid);
+		console.log("The device UUID is " + uuid);
+		this.router.navigate(["/details"]);
+		// this.page.addCss("#step3 {visibility: collapsed}");
+		// this.page.addCss("#step2 {visibility: visible}");
 	}
 }
