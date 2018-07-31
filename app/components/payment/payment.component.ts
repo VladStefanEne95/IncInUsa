@@ -11,7 +11,8 @@ var appSettings = require("application-settings");
 @Component({
     selector: "Payment",
     moduleId: module.id,
-    templateUrl: "./payment.component.html"
+	templateUrl: "./payment.component.html",
+	styleUrls: ['./payment.component.css']
 })
 export class PaymentComponent implements OnInit {
 
@@ -19,13 +20,49 @@ export class PaymentComponent implements OnInit {
 	cardMonth = '';
 	cardYear = '';
 	cardCvc = '';
+	firstName :string;
+	lastName :string;
 	@ViewChild("card") card: ElementRef;
+	@ViewChild("cvc") cvc: ElementRef;
+	@ViewChild("cardYearId") cy: ElementRef;
+	@ViewChild("cardMonthId") cm: ElementRef;
+	@ViewChild("CB1") FirstCheckBox: ElementRef;
+
 	constructor(page: Page,public PaymentService: PaymentService, private router: Router) {
-		//page.actionBarHidden = true;
+		page.actionBarHidden = true;
+	}
+
+	dateChanged(value) {
+		if (value.length == 2) {
+			this.cardMonth = value;
+			this.cy.nativeElement.focus();
+		}
+		if (value.length > 2) {
+			this.cardMonth = value.substr(0, 2);
+			this.cm.nativeElement.text = this.cardMonth;
+			this.cy.nativeElement.focus();
+			this.cy.nativeElement.text = value.substr(2, 1);
+		}
+	}
+
+	yearChanged(value) {
+		if (value.length == 2) {
+			this.cardYear = value;
+			this.cvc.nativeElement.focus();
+		}
+		if (value.length > 2) {
+			this.cardYear = value.substr(0, 2);
+			this.cy.nativeElement.text = this.cardYear;
+			this.cvc.nativeElement.focus();
+		}
+		if(value.length == 0)
+			this.cm.nativeElement.focus();
 	}
 
     ngOnInit(): void {
-        // Init your component properties here.
+		// Init your component properties here.
+		this.firstName = appSettings.getString("firstName", "");
+		this.lastName = appSettings.getString("lastName", "");
 	}
 
 	submit(args: EventData): void {

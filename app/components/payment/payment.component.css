@@ -1,0 +1,52 @@
+.my-container {
+	margin-left: 30;
+	margin-right: 30;
+}
+.green-text {
+	color: #25B12A;
+	font-weight: 800;
+}
+
+.card-title {
+	text-transform: capitalize;
+	color: black;
+	font-size: 20;
+	margin-top: 5;
+	margin-bottom: 20;
+	font-weight: 700;
+}
+
+.card-number {
+	margin-top: 5;
+	margin-bottom: 5;
+	border-width: 1;
+	border-color: gray;
+	border-radius: 7;
+	vertical-align: middle;
+}
+	
+.form-text-left-payment {
+    border-width: 0 0 1 0;
+    border-bottom-color: white;
+    vertical-align: middle;
+    padding-top: 5;
+	text-align: left;
+	margin-left: 20;
+	padding-bottom: 5;
+	font-size: 16;
+	color:black;
+}
+.remove-white-space {
+	padding-left: 0;
+	padding-right: 0;
+	margin-left: 0;
+	margin-right :0;
+}
+.exp-month {
+	text-align: right;
+	margin-left: 20;
+}
+
+.radio-button-payment {
+	margin-left: 0;
+}

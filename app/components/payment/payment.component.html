@@ -1,17 +1,50 @@
 
-<ActionBar class="action-bar">
-    <Label class="action-bar-title" text="Payment"></Label>
-</ActionBar>
- 
-<StackLayout class="page" style="background-color:black;">
-	<CreditCardView #card></CreditCardView>
-	<TextField class="form-text-left" [(ngModel)]="cardNumber" hint="Number"  keyboardType="number"
-	autocorrect="false" ></TextField>
-	<TextField class="form-text-left"  [(ngModel)]="cardMonth"  hint="Month"  keyboardType="number"
-	autocorrect="false" ></TextField>
-	<TextField class="form-text-left" [(ngModel)]="cardYear" hint="Year"  keyboardType="number"
-	autocorrect="false" ></TextField>
-	<TextField class="form-text-left" [(ngModel)]="cardCvc" hint="Cvc"  keyboardType="number"
-	autocorrect="false" ></TextField>
-	<Button text="Submit" (tap)="submit($event)"></Button>
-</StackLayout>
+<ScrollView>
+		<StackLayout orientation="vertical">
+			<StackLayout>
+				<GridLayout rows="*" columns="50,*, 50" class="topmenu-grid">
+					<Label class="topmenu-back" row="0" col="0" text="<" ></Label>
+					<StackLayout row="0" col="1">
+						<Label class="topmenu-step" text="STEP 5/5" ></Label>
+						<Label class="topmenu-title" text="Payment" ></Label>
+					</StackLayout>
+					<Label class="topmenu-logo" row="0" col="2" text="LOGO" ></Label>
+				</GridLayout>
+			</StackLayout>
+			<StackLayout class="my-container">
+				<Label text="128-bit ssl encryption" class="capitalize green-text"></Label>
+				<Label text="Credit Card Details" class="card-title"></Label>
+				<StackLayout class="card-number">
+					<TextField class="form-text-left-payment" [(ngModel)]="cardNumber" hint="Card number"  keyboardType="number"
+					autocorrect="false" ></TextField>
+				</StackLayout>
+				<StackLayout class="card-number">
+						<TextField class="form-text-left-payment" [(ngModel)]="cardholder" hint="Cardholder’s Name"
+						autocorrect="false" ></TextField>
+				</StackLayout>
+				<GridLayout r0w="0" col="0" rows="*" columns="*, 20,*"  >
+					<GridLayout rows="*" columns="auto,auto,auto" class="card-number">
+							<TextField #cardMonthId row="0" col="0" class="form-text-left-payment remove-white-space exp-month"   [ngModel]='cardMonth' (ngModelChange)='dateChanged($event)'   hint="MM"  keyboardType="number"
+							autocorrect="false" ></TextField>
+							<Label row="0" col="1" text="/" style="vertical-align:middle;"></Label>
+							<TextField #cardYearId row="0" col="2" class="form-text-left-payment remove-white-space" [ngModel]='cardYear' (ngModelChange)='yearChanged($event)' hint="YY"  keyboardType="number"
+							autocorrect="false" ></TextField>
+					</GridLayout>
+					<StackLayout row="0" col="2" class="card-number">
+						<TextField #cvc class="form-text-left-payment" [(ngModel)]="cardCvc" hint="CVC"  keyboardType="number"
+						autocorrect="false" ></TextField>
+					</StackLayout>
+				</GridLayout>
+			</StackLayout>
+
+			<Label class="h-line"></Label>
+			<StackLayout class="my-container">
+					<Label text="Billing Info" class="card-title"></Label>
+					<CheckBox  text="Same as personal information for {{ firstName }} {{ lastName }}" class="radio-button-payment"  ngDefaultControl></CheckBox>
+			</StackLayout>
+			
+			<Label class="h-line"></Label>
+
+			<Button text="Pay $595.00" class="black-button" (tap)="submit($event)"></Button>		
+		</StackLayout>
+	</ScrollView>

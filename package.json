@@ -24,6 +24,7 @@
     "nativescript-camera": "4.0.2",
     "nativescript-checkbox": "3.0.3",
     "nativescript-imagepicker": "6.0.3",
+    "nativescript-ngx-fonticon": "4.2.0",
     "nativescript-permissions": "1.2.3",
     "nativescript-stripe": "3.2.1",
     "nativescript-theme-core": "~1.0.4",
