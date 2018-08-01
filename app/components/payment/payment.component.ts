@@ -42,6 +42,8 @@ export class PaymentComponent implements OnInit {
 			this.cm.nativeElement.text = this.cardMonth;
 			this.cy.nativeElement.focus();
 			this.cy.nativeElement.text = value.substr(2, 1);
+			this.cy.nativeElement.selectionStart = this.cy.nativeElement.text.length;
+			this.cy.nativeElement.selectionStart = this.cy.nativeElement.text.length;
 		}
 	}
 
@@ -54,9 +56,14 @@ export class PaymentComponent implements OnInit {
 			this.cardYear = value.substr(0, 2);
 			this.cy.nativeElement.text = this.cardYear;
 			this.cvc.nativeElement.focus();
+			this.cvc.nativeElement.selectionStart = this.cvc.nativeElement.text.length;
+			this.cvc.nativeElement.selectionEnd = this.cvc.nativeElement.text.length;
 		}
-		if(value.length == 0)
+		if (value.length == 0) {
 			this.cm.nativeElement.focus();
+			this.cm.nativeElement.selectionStart = this.cm.nativeElement.text.length;
+			this.cm.nativeElement.selectionEnd = this.cm.nativeElement.text.length;
+		}
 	}
 
     ngOnInit(): void {

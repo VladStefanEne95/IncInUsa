@@ -3,31 +3,69 @@
 </ActionBar>
 
 <ScrollView>
-		<StackLayout orientation="vertical">
+	<GridLayout rows="*" columns="*">
+		<StackLayout id="step1" row="0" col="0" orientation="vertical" style=" z-index:20">
 				<StackLayout>
 					<GridLayout rows="*" columns="50,*, 50" class="topmenu-grid">
 						<Label class="topmenu-back" row="0" col="0" text="<" ></Label>
-						<StackLayout row="0" col="1">
+						<StackLayout row="0" col="1"> 
 							<Label class="topmenu-step" text="STEP 3/5" ></Label>
 							<Label class="topmenu-title" text="ID Verification" ></Label>
 						</StackLayout>
 						<Label class="topmenu-logo" row="0" col="2" text="LOGO" ></Label>
 					</GridLayout>
 				</StackLayout>
+
 				<StackLayout>
-					<Label class="form-label"  text="DOCUMENT TYPE" ></Label>
-					<TextField class="form-text-left" [(ngModel)]="lastName" hint="Enter last name" ></TextField>
+					<Label  class="details-title capitalize" text="DOCUMENT TYPE" ></Label>
+					<StackLayout class="dropdown-underline">
+						<DropDown #dd class="dropdown-default" [items]="items" [(ngModel)]="selectedIndex" (selectedIndexChanged)="onchange($event)"></DropDown>
+					</StackLayout>
 				</StackLayout>
 				<StackLayout>
-					<Label class="form-label"  text="DOCUMENT NUMBER" ></Label>
-					<TextField class="form-text-left" [(ngModel)]="email" hint="Enter email"  keyboardType="email"
-					autocorrect="false" ></TextField>
+					<Label  class="details-title capitalize"  text="DOCUMENT NUMBER" ></Label>
+					<StackLayout class="dropdown-underline">
+						<TextField class="hide-border " [(ngModel)]="docNumber" hint="Enter document number"  keyboardType="number"
+						autocorrect="false" ></TextField>
+					</StackLayout>
 				</StackLayout>
 				
-		<Image [src]="imageSrc" *ngIf="imageSelected" [width]="previewSize" (tap)="onSelectSingleTap()" [height]="previewSize" stretch="aspectFit"></Image>
-		<Image src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTkotpjsfO_48KLWDkICAnq1NxiGyV5wd450RwgKYWa5xmRLSxX" *ngIf="!imageSelected" [width]="previewSize" [height]="previewSize" stretch="aspectFit"></Image>
-		<Button  text="Chose from Library" (tap)="onSelectSingleTap()" horizontalAlignment="center"></Button>
-		<Button  text="Take Photo" (tap)="takePicture()" horizontalAlignment="center"></Button>
-	</StackLayout>
-
+			<Image [src]="imageSrc" *ngIf="imageSelected" [width]="previewSize" (tap)="onSelectSingleTap()" [height]="previewSize" stretch="aspectFit"></Image>
+			<Image src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTkotpjsfO_48KLWDkICAnq1NxiGyV5wd450RwgKYWa5xmRLSxX" *ngIf="!imageSelected" [width]="previewSize" [height]="previewSize" stretch="aspectFit"></Image>
+			<Button class="green-button" text="NEXT" (tap)="showOptions();"> </Button>
+		</StackLayout>
+		<StackLayout row="0" col="0" id="step2" style="background-color:gray;">
+			<StackLayout>
+				<GridLayout rows="*" columns="50,*, 50" class="topmenu-grid">
+					<Label class="topmenu-back" row="0" col="0" text="<" ></Label>
+					<StackLayout row="0" col="1">
+						<Label class="topmenu-step" text="STEP 3/5" ></Label>
+						<Label class="topmenu-title" text="ID Verification" ></Label>
+					</StackLayout>
+					<Label class="topmenu-logo" row="0" col="2" text="LOGO" ></Label>
+				</GridLayout>
+			</StackLayout>
+			<StackLayout>
+				<Label  class="details-title capitalize" text="DOCUMENT TYPE" ></Label>
+				<StackLayout class="dropdown-underline">
+					<DropDown #dd class="dropdown-default" [items]="items" [(ngModel)]="selectedIndex" (selectedIndexChanged)="onchange($event)"></DropDown>
+				</StackLayout>
+			</StackLayout>
+			<StackLayout>
+				<Label  class="details-title capitalize"  text="DOCUMENT NUMBER" ></Label>
+				<StackLayout class="dropdown-underline">
+					<TextField class="hide-border " [(ngModel)]="docNumber" hint="Enter document number"  keyboardType="number"
+					autocorrect="false" ></TextField>
+				</StackLayout>
+			</StackLayout>
+				
+			<Image [src]="imageSrc" *ngIf="imageSelected" [width]="previewSize" (tap)="onSelectSingleTap()" [height]="previewSize" stretch="aspectFit"></Image>
+			<Image src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTkotpjsfO_48KLWDkICAnq1NxiGyV5wd450RwgKYWa5xmRLSxX" *ngIf="!imageSelected" [width]="previewSize" [height]="previewSize" stretch="aspectFit"></Image>
+			<StackLayout class="button-group-overlay">
+				<Label text ="Upload ID"> </Label>
+				<Label class="button-overlay" text="Take Photo" (tap)="takePicture()"></Label>
+				<Label class="button-overlay" text="Chose from Library" (tap)="onSelectSingleTap()"></Label>
+			</StackLayout>
+		</StackLayout>
+	</GridLayout>
 </ScrollView>

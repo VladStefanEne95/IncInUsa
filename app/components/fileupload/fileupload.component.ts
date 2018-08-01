@@ -8,6 +8,7 @@ import * as imagepicker from "nativescript-imagepicker";
 import * as FileSystem from "file-system";
 import { Observable } from "rxjs";
 import {Page} from "ui/page";
+import { SelectedIndexChangedEventData } from "nativescript-drop-down";
 const imageSourceModule = require("tns-core-modules/image-source")
 
 var appSettings = require("application-settings");
@@ -18,21 +19,48 @@ var appSettings = require("application-settings");
     templateUrl: "./fileupload.component.html"
 })
 export class FileuploadComponent implements OnInit {
+  
+	public selectedIndex = 1;
+    public items: Array<string>;
+
 
     imageSrc: any;
 	isSingleMode: boolean = true;
 	imageSelected: boolean = false;
     thumbSize: number = 80;
-    previewSize: number = 300;
+	previewSize: number = 300;
+	docType :string;
+	docNumber :number;
 
-	constructor(page: Page) {
+	constructor(private page: Page) {
 		page.actionBarHidden = true;
+		this.items = [];
 	}
 
     ngOnInit(): void {
-        // Init your component properties here.
+		// Init your component properties here.
+		//this.page.addCss("#step2 {visibility: collapsed}");
+		this.items.push("Second");
+		this.items.push("Passaport");
 	}
 	
+	public onchange(args: SelectedIndexChangedEventData) {
+        console.log(`Drop Down selected index changed"`);
+    }
+
+    public onopen() {
+        console.log("Drop Down opened.");
+    }
+
+    public onclose() {
+        console.log("Drop Down closed.");
+	}
+	
+	public showOptions() {
+		console.log("ok");
+		this.page.addCss("#step1 {visibility: collapsed}");
+		this.page.addCss("#step2 {visibility: visible}");
+	}
 	
     public onSelectSingleTap() {
 		this.isSingleMode = true;
