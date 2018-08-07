@@ -30,11 +30,11 @@
 					</StackLayout>
 				</StackLayout>
 				
-			<Image [src]="imageSrc" *ngIf="imageSelected" [width]="previewSize" (tap)="onSelectSingleTap()" [height]="previewSize" stretch="aspectFit"></Image>
-			<Image src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTkotpjsfO_48KLWDkICAnq1NxiGyV5wd450RwgKYWa5xmRLSxX" *ngIf="!imageSelected" [width]="previewSize" [height]="previewSize" stretch="aspectFit"></Image>
-			<Button class="green-button" text="NEXT" (tap)="showOptions();"> </Button>
+			<Image [src]="imageSrc"  (tap)="showOptions();" *ngIf="imageSelected" [width]="previewSize" (tap)="onSelectSingleTap()" [height]="previewSize" stretch="aspectFit"></Image>
+			<Image  (tap)="showOptions();" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTkotpjsfO_48KLWDkICAnq1NxiGyV5wd450RwgKYWa5xmRLSxX" *ngIf="!imageSelected" [width]="previewSize" [height]="previewSize" stretch="aspectFit"></Image>
+			<Button class="green-button" text="NEXT"> </Button>
 		</StackLayout>
-		<StackLayout row="0" col="0" id="step2" style="background-color:gray;">
+		<StackLayout row="0" col="0" id="step2" style="background-color:#d3d3d3;">
 			<StackLayout>
 				<GridLayout rows="*" columns="50,*, 50" class="topmenu-grid">
 					<Label class="topmenu-back" row="0" col="0" text="<" ></Label>
@@ -45,16 +45,16 @@
 					<Label class="topmenu-logo" row="0" col="2" text="LOGO" ></Label>
 				</GridLayout>
 			</StackLayout>
-			<StackLayout>
+			<StackLayout (tap)="hideOptions();">
 				<Label  class="details-title capitalize" text="DOCUMENT TYPE" ></Label>
 				<StackLayout class="dropdown-underline">
-					<DropDown #dd class="dropdown-default" [items]="items" [(ngModel)]="selectedIndex" (selectedIndexChanged)="onchange($event)"></DropDown>
+					<DropDown (tap)="hideOptions();" #dd class="dropdown-default" [items]="items" [(ngModel)]="selectedIndex" (selectedIndexChanged)="onchange($event)"></DropDown>
 				</StackLayout>
 			</StackLayout>
-			<StackLayout>
+			<StackLayout (tap)="hideOptions();">
 				<Label  class="details-title capitalize"  text="DOCUMENT NUMBER" ></Label>
 				<StackLayout class="dropdown-underline">
-					<TextField class="hide-border " [(ngModel)]="docNumber" hint="Enter document number"  keyboardType="number"
+					<TextField (tap)="hideOptions();" class="hide-border " [(ngModel)]="docNumber" hint="Enter document number"  keyboardType="number"
 					autocorrect="false" ></TextField>
 				</StackLayout>
 			</StackLayout>
@@ -62,9 +62,12 @@
 			<Image [src]="imageSrc" *ngIf="imageSelected" [width]="previewSize" (tap)="onSelectSingleTap()" [height]="previewSize" stretch="aspectFit"></Image>
 			<Image src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTkotpjsfO_48KLWDkICAnq1NxiGyV5wd450RwgKYWa5xmRLSxX" *ngIf="!imageSelected" [width]="previewSize" [height]="previewSize" stretch="aspectFit"></Image>
 			<StackLayout class="button-group-overlay">
-				<Label text ="Upload ID"> </Label>
-				<Label class="button-overlay" text="Take Photo" (tap)="takePicture()"></Label>
+				<Label class="title-overlay" text ="Upload ID"> </Label>
+				<Label style="border-bottom-width:1; border-bottom-color:#33cc00; border-top-width:1; border-top-color: #d3d3d3;" class="button-overlay" text="Take Photo" (tap)="takePicture()"></Label>
 				<Label class="button-overlay" text="Chose from Library" (tap)="onSelectSingleTap()"></Label>
+			</StackLayout>
+			<StackLayout class="button-group-overlay">
+				<Label class="button-overlay"  (tap)="hideOptions();" text ="Cancel"> </Label>
 			</StackLayout>
 		</StackLayout>
 	</GridLayout>

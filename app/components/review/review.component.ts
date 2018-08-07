@@ -23,6 +23,7 @@ export class ReviewComponent implements OnInit {
 	state :string;
 	companyName: string;
 	companyType :string;
+	directors :string;
 
 	//@ViewChild("step2") step2: ElementRef;
     constructor(private page: Page, private router: Router) {
@@ -31,6 +32,11 @@ export class ReviewComponent implements OnInit {
 		this.page = page;
 		this.page.addCss("#step3 {visibility: collapsed}");
     }
+
+	editDirector() {
+		this.router.navigate(["/director"]);
+	}
+
 
     ngOnInit(): void {
 		// Init your component properties here.
@@ -45,5 +51,13 @@ export class ReviewComponent implements OnInit {
 		this.postal = appSettings.getString("postal", 0);
 		this.country = appSettings.getString("country", "");
 		this.state = appSettings.getString("state", "");
+		this.directors = appSettings.getString("directors", "");
+	}
+
+	next() {
+		this.router.navigate(["/payment"]);
+	}
+	addDirector() {
+		this.router.navigate(["/newdirector"]);
 	}
 }

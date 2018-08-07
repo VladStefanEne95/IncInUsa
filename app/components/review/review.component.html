@@ -25,9 +25,9 @@
 					<Label text="List of Directors" class="h2" style="margin-left:20; margin-top:50"></Label>
 					<GridLayout rows="*" columns="*,*" class="grid-form">
 							<Label class="form-label" row="0" col="0" text="{{ firstName }} {{ lastName }}" ></Label>
-							<Label class="form-text h3" row="0" col="1" text="to do"></Label>
+							<Label class="form-text h3" style="color:#0675e1; margin-right:30" (tap)="editDirector()" row="0" col="1" text="EDIT"></Label>
 					</GridLayout>
-					<Button text="Add a Director" style="margin-top:30" class="blue-button" (tap)="start()"  ></Button>
+					<Button text="Add a Director" style="margin-top:30" class="blue-button"  (tap)="addDirector()"  ></Button>
 
 				<Label text="Personal Information" class="h2" style="margin-left:20;"></Label>
 					<GridLayout rows="*" columns="*,*" class="grid-form">
@@ -76,6 +76,6 @@
 			</StackLayout>
 			<Label text="AMOUNT DUE" class="details-title"></Label>
 			<Label text="$595.00" style="color: #25B12A;margin-left:20; font-size:18"></Label>
-			<Button text="Continue to Payment" style="margin-top:40" class="blue-button" (tap)="start()"  ></Button>
+			<Button text="Continue to Payment" style="margin-top:40" class="blue-button" (tap)="next()"  ></Button>
 		</StackLayout>
 	</ScrollView>

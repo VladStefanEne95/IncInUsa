@@ -1,20 +1,20 @@
 import { NgModule, NO_ERRORS_SCHEMA } from "@angular/core";
 import { NativeScriptCommonModule } from "nativescript-angular/common";
 import { NativeScriptFormsModule } from "nativescript-angular/forms";
-import { DirectorRoutingModule } from "./director-routing.module";
-import { DirectorComponent } from "./director.component";
+import { NewDirectorRoutingModule } from "./newdirector-routing.module";
+import { NewDirectorComponent } from "./newdirector.component";
 
 @NgModule({
     imports: [
 		NativeScriptCommonModule,
 		NativeScriptFormsModule,
-        DirectorRoutingModule
+        NewDirectorRoutingModule
     ],
     declarations: [
-        DirectorComponent
+        NewDirectorComponent
     ],
     schemas: [
         NO_ERRORS_SCHEMA
     ]
 })
-export class DirectorModule { }
+export class NewDirectorModule { }

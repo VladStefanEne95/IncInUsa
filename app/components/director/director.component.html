@@ -2,80 +2,64 @@
 <ScrollView>
 		<StackLayout orientation="vertical">
 			<StackLayout>
-				<GridLayout rows="*" columns="50,*, 50" class="topmenu-grid">
-					<Label class="topmenu-back" row="0" col="0" text="<" ></Label>
-					<StackLayout row="0" col="1">
-						<Label class="topmenu-step" text="STEP 4/5" ></Label>
-						<Label class="topmenu-title" text="Review order" ></Label>
-					</StackLayout>
-					<Label class="topmenu-logo" row="0" col="2" text="LOGO" ></Label>
+				<GridLayout rows="*" columns="40,*" class="edit-back">
+					<Label style="margin-left:20; font-size:22;" row="0" col="0" text="<" ></Label>
+					<Label style="text-align:left; font-size:22;" row="0" col="1" text="Back" ></Label>
 				</GridLayout>
-			</StackLayout>	
+			</StackLayout>
+			<Label text="Edit Director" class="h2" style="margin-left:20;"></Label>	
 			<StackLayout>
-					<Label text="Company details" class="h2" style="margin-left:20;"></Label>
-					<GridLayout rows="*" columns="*,*" class="grid-form">
-							<Label class="form-label" row="0" col="0" text="Company Name" ></Label>
-							<Label class="form-text h3" row="0" col="1" [text]="companyName"></Label>
-						</GridLayout>
-						<GridLayout rows="*" columns="*,*" class="grid-form">
-							<Label class="form-label" row="0" col="0" text="Company Type" ></Label>
-							<Label class="form-text h3" row="0" col="1" [text]="companyType"></Label>
-						</GridLayout>
-
-					<Label text="List of Directors" class="h2" style="margin-left:20; margin-top:50"></Label>
-					<GridLayout rows="*" columns="*,*" class="grid-form">
-							<Label class="form-label" row="0" col="0" text="{{ firstName }} {{ lastName }}" ></Label>
-							<Label class="form-text h3" row="0" col="1" text="to do"></Label>
-					</GridLayout>
-					<Button text="Add a Director" style="margin-top:30" class="blue-button" (tap)="start()"  ></Button>
-
-				<Label text="Personal Information" class="h2" style="margin-left:20;"></Label>
-					<GridLayout rows="*" columns="*,*" class="grid-form">
-							<Label class="form-label" row="0" col="0" text="First Name" ></Label>
-							<Label class="form-text h3" row="0" col="1" [text]="firstName"></Label>
-						</GridLayout>
-						<GridLayout rows="*" columns="*,*" class="grid-form">
-							<Label class="form-label" row="0" col="0" text="Last name" ></Label>
-							<Label class="form-text h3" row="0" col="1" [text]="lastName"></Label>
-						</GridLayout>
-						<GridLayout rows="*" columns="*,*" class="grid-form">
-							<Label class="form-label" row="0" col="0" text="Email" ></Label>
-							<Label class="form-text h3" row="0" col="1" [text]="email"></Label>
-						</GridLayout>
-			
-						<GridLayout rows="*" columns="*,*" class="grid-form">
-								<Label class="form-label" row="0" col="0" text="Adress line 1" ></Label>
-								<Label class="form-text h3" row="0" col="1" [text]="al1"></Label>
-						</GridLayout>
-			
-						<GridLayout rows="*" columns="*,*" class="grid-form">
-								<Label class="form-label" row="0" col="0" text="Adress Line 2" ></Label>
-								<Label class="form-text h3" row="0" col="1" [text]="al2"></Label>
-						</GridLayout>
-			
-						<GridLayout rows="*" columns="*,*" class="grid-form">
-								<Label class="form-label" row="0" col="0" text="City" ></Label>
-								<Label class="form-text  h3" row="0" col="1" [text]="city" ></Label>
-						</GridLayout>
-			
-						<GridLayout rows="*" columns="*,*" class="grid-form">
-								<Label class="form-label" row="0" col="0" text="Postal Code" ></Label>
-								<Label class="form-text h3" row="0" col="1" [text]="postal" ></Label>
-						</GridLayout>
-			
-						<GridLayout rows="*" columns="*,*" class="grid-form">
-								<Label class="form-label" row="0" col="0" text="Country" ></Label>
-								<Label class="form-text h3" row="0" col="1" [text]="country"></Label>
-						</GridLayout>
-			
-						<GridLayout rows="*" columns="*,*" class="grid-form">
-								<Label class="form-label" row="0" col="0" text="State" ></Label>
-								<Label class="form-text h3" row="0" col="1" [text]="state"></Label>
-						</GridLayout>
+				<GridLayout rows="*" columns="*,*" class="grid-form">
+					<Label class="form-label" row="0" col="0" text="First Name" ></Label>
+					<TextField class="form-text" row="0" col="1" [(ngModel)]="firstName" hint="Enter first name" ></TextField>
+				</GridLayout>
+				<GridLayout rows="*" columns="*,*" class="grid-form">
+					<Label class="form-label" row="0" col="0" text="Last name" ></Label>
+					<TextField class="form-text" row="0" col="1" [(ngModel)]="lastName" hint="Enter last name" ></TextField>
+				</GridLayout>
+				<GridLayout rows="*" columns="*,*" class="grid-form">
+					<Label class="form-label" row="0" col="0" text="Email" ></Label>
+					<TextField class="form-text" row="0" col="1" [(ngModel)]="email" hint="Enter email"  keyboardType="email"
+					autocorrect="false" ></TextField>
+				</GridLayout>
+	
+				<GridLayout rows="*" columns="*,*" class="grid-form">
+						<Label class="form-label" row="0" col="0" text="Adress line 1" ></Label>
+						<TextField class="form-text" row="0" col="1" [(ngModel)]="al1" hint="Enter adress"  
+						autocorrect="false" ></TextField>
+				</GridLayout>
+	
+				<GridLayout rows="*" columns="*,*" class="grid-form">
+						<Label class="form-label" row="0" col="0" text="Adress Line 2" ></Label>
+						<TextField class="form-text" row="0" col="1" [(ngModel)]="al2" hint="Enter adress" 
+						autocorrect="false" ></TextField>
+				</GridLayout>
+	
+				<GridLayout rows="*" columns="*,*" class="grid-form">
+						<Label class="form-label" row="0" col="0" text="City" ></Label>
+						<TextField class="form-text" row="0" col="1" [(ngModel)]="city" hint="Enter city" 
+						autocorrect="false" ></TextField>
+				</GridLayout>
+	
+				<GridLayout rows="*" columns="*,*" class="grid-form">
+						<Label class="form-label" row="0" col="0" text="Postal Code" ></Label>
+						<TextField class="form-text" row="0" col="1" [(ngModel)]="postal" hint="Enter postal code"  keyboardType="number"
+						autocorrect="false" ></TextField>
+				</GridLayout>
+	
+				<GridLayout rows="*" columns="*,*" class="grid-form">
+						<Label class="form-label" row="0" col="0" text="Country" ></Label>
+						<TextField class="form-text" row="0" col="1" [(ngModel)]="country" hint="Enter country" 
+						autocorrect="false" ></TextField>
+				</GridLayout>
+	
+				<GridLayout rows="*" columns="*,*" class="grid-form">
+						<Label class="form-label" row="0" col="0" text="State" ></Label>
+						<TextField class="form-text" row="0" col="1" [(ngModel)]="state" hint="Enter state" 
+						autocorrect="false" ></TextField>
+				</GridLayout>
 			
 			</StackLayout>
-			<Label text="AMOUNT DUE" class="details-title"></Label>
-			<Label text="$595.00" style="color: #25B12A;margin-left:20; font-size:18"></Label>
-			<Button text="Continue to Payment" style="margin-top:40" class="blue-button" (tap)="start()"  ></Button>
+			<Button text="Done" style="margin-top:40" class="green-button" (tap)="done()"  ></Button>
 		</StackLayout>
 	</ScrollView>

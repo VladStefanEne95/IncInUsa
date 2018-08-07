@@ -28,7 +28,7 @@ export class FileuploadComponent implements OnInit {
 	isSingleMode: boolean = true;
 	imageSelected: boolean = false;
     thumbSize: number = 80;
-	previewSize: number = 300;
+	previewSize: number = 200;
 	docType :string;
 	docNumber :number;
 
@@ -39,7 +39,7 @@ export class FileuploadComponent implements OnInit {
 
     ngOnInit(): void {
 		// Init your component properties here.
-		//this.page.addCss("#step2 {visibility: collapsed}");
+		this.page.addCss("#step2 {visibility: collapsed}");
 		this.items.push("Second");
 		this.items.push("Passaport");
 	}
@@ -57,9 +57,16 @@ export class FileuploadComponent implements OnInit {
 	}
 	
 	public showOptions() {
-		console.log("ok");
 		this.page.addCss("#step1 {visibility: collapsed}");
 		this.page.addCss("#step2 {visibility: visible}");
+		this.page.addCss(".hide-border {border-bottom-color: #dedede}");
+	}
+
+
+	public hideOptions() {
+		this.page.addCss("#step2 {visibility: collapsed}");
+		this.page.addCss("#step1 {visibility: visible}");
+		this.page.addCss(".hide-border {border-bottom-color: white}");
 	}
 	
     public onSelectSingleTap() {

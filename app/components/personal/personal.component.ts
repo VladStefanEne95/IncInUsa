@@ -27,6 +27,7 @@ export class PersonalComponent implements OnInit {
 	state :string;
 	companyName: string;
 	companyType :string;
+	directors :string;
 	
 
     constructor( private page: Page, private router: Router) {
@@ -48,20 +49,22 @@ export class PersonalComponent implements OnInit {
 		this.state = appSettings.getString("state", "");
 		this.FirstCheckBox.nativeElement.checked = "true";
 	}
-	step2() {
+
+
+	step3() {
 	
-		if (this.firstName == "" ||
-			this.lastName == "" ||
-			this.email == "" ||
-			this.al1 == "" ||
-			this.al2 == "" ||
-			this.city == "" ||
-			this.postal == 0 ||
-			this.country == "" ||
-			this.state == "") {
-				alert("please complete the entire form");
-				return;
-			}
+		// if (this.firstName == "" ||
+		// 	this.lastName == "" ||
+		// 	this.email == "" ||
+		// 	this.al1 == "" ||
+		// 	this.al2 == "" ||
+		// 	this.city == "" ||
+		// 	this.postal == 0 ||
+		// 	this.country == "" ||
+		// 	this.state == "") {
+		// 		alert("please complete the entire form");
+		// 		return;
+		// 	}
 		appSettings.setString("firstName", this.firstName);
 		appSettings.setString("lastName", this.lastName);
 		appSettings.setString("email", this.email);
@@ -71,8 +74,25 @@ export class PersonalComponent implements OnInit {
 		appSettings.setString ("postal", this.postal);
 		appSettings.setString("country", this.country);
 		appSettings.setString("state", this.state);
-		appSettings.setString("addToDirectors", this.FirstCheckBox.nativeElement.checked);
-		this.router.navigate(["/payment"]);
+		appSettings.setString("addToDirectors", String(this.FirstCheckBox.nativeElement.checked));
+
+		if (this.FirstCheckBox.nativeElement.checked == true) {
+			appSettings.setString("directors", JSON.stringify([{ 
+														"firstName": this.firstName,
+														 "lastName": this.lastName,
+														 "email": this.email,
+														 "al1": this.al1,
+														 "al2": this.al2,
+														 "city": this.city,
+														 "postal": this.postal,
+														 "country": this.country,
+														 "state": this.state
+			}]));
+		} else {
+			appSettings.setString("directors", JSON.stringify([{}]));
+		}
+
+		this.router.navigate(["/review"]);
 	}
 
 }

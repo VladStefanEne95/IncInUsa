@@ -61,6 +61,14 @@ components that have the btn class name.
 	margin-bottom:20;
     color: white;
 }
+.edit-back {
+    background-color: white;
+	margin-top: 20;
+	margin-bottom: 10;
+    color: #0675e1;
+}
+
+
 .topmenu-back {
     text-align: center;
     vertical-align: center;
@@ -218,14 +226,26 @@ components that have the btn class name.
 	background-color: white;
 	margin-left: 10;
 	margin-right: 10;
-	margin-bottom: 10;
+	margin-bottom: 20;
 	border-radius: 10;
 }
 .button-overlay {
 	color: #0675e1;
 	font-size: 18;
+	text-align: center;
+	padding-top: 15;
+	padding-bottom: 15;
 	width: 100%;
-	background-color: white;
+	border-color: white;
+}
+
+.title-overlay {
+	color: #d3d3d3;
+	font-size: 16;
+	text-align: center;
+	padding-top: 15;
+	padding-bottom: 15;
+	width: 100%;
 	border-color: white;
 }
 
