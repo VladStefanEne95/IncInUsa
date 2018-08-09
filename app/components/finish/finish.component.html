@@ -1,0 +1,13 @@
+<ActionBar class="action-bar">
+    <Label class="action-bar-title" text=""></Label>
+</ActionBar>
+
+<ScrollView>
+	<StackLayout orientation="vertical">
+		<Label textWrap="true" class="h1 container-finish-title" text="Congratulations!" ></Label>
+		<Image src="https://www.google.com/images/errors/logo_sm_2.png" ></Image>
+		<Label class="container-finish" textWrap="true" text="You’ve successfully completed your application for registering a US company with IncInUSA." ></Label>
+		<Label class="container-finish" textWrap="true" text="You can now monitor the application status in our app." ></Label>
+		<Label class="green-label" (tap)="viewAppStatus()"  text="VIEW APPLICATION STATUS" ></Label>
+	</StackLayout>
+</ScrollView>

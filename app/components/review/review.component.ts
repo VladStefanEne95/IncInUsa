@@ -24,6 +24,7 @@ export class ReviewComponent implements OnInit {
 	companyName: string;
 	companyType :string;
 	directors :string;
+	directorsArr :Array<any>;
 
 	//@ViewChild("step2") step2: ElementRef;
     constructor(private page: Page, private router: Router) {
@@ -33,8 +34,8 @@ export class ReviewComponent implements OnInit {
 		this.page.addCss("#step3 {visibility: collapsed}");
     }
 
-	editDirector() {
-		this.router.navigate(["/director"]);
+	editDirector(id) {
+		this.router.navigate(["/director", id]);
 	}
 
 
@@ -52,6 +53,7 @@ export class ReviewComponent implements OnInit {
 		this.country = appSettings.getString("country", "");
 		this.state = appSettings.getString("state", "");
 		this.directors = appSettings.getString("directors", "");
+		this.directorsArr = JSON.parse(this.directors);
 	}
 
 	next() {

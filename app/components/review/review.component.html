@@ -23,9 +23,9 @@
 						</GridLayout>
 
 					<Label text="List of Directors" class="h2" style="margin-left:20; margin-top:50"></Label>
-					<GridLayout rows="*" columns="*,*" class="grid-form">
-							<Label class="form-label" row="0" col="0" text="{{ firstName }} {{ lastName }}" ></Label>
-							<Label class="form-text h3" style="color:#0675e1; margin-right:30" (tap)="editDirector()" row="0" col="1" text="EDIT"></Label>
+					<GridLayout *ngFor="let dir of directorsArr; let i = index" rows="*" columns="*,*" class="grid-form">
+							<Label class="form-label" row="0" col="0" text="{{ dir.firstName }} {{ dir.lastName }}" ></Label>
+							<Label class="form-text h3" style="color:#0675e1; margin-right:30" (tap)="editDirector(i)" row="0" col="1" text="EDIT"></Label>
 					</GridLayout>
 					<Button text="Add a Director" style="margin-top:30" class="blue-button"  (tap)="addDirector()"  ></Button>
 

@@ -1,6 +1,6 @@
 import { Component, OnInit,ViewChild, ElementRef } from "@angular/core";
 import {Page} from "ui/page";
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 const plugin = require("nativescript-uuid");
 var appSettings = require("application-settings");
@@ -12,6 +12,7 @@ var appSettings = require("application-settings");
 })
 export class DirectorComponent implements OnInit {
 
+	id :number;
 	firstName :string;
 	lastName :string;
 	email :string;
@@ -26,7 +27,7 @@ export class DirectorComponent implements OnInit {
 	directors :string;
 
 	//@ViewChild("step2") step2: ElementRef;
-    constructor(private page: Page, private router: Router) {
+    constructor(private page: Page, private router: Router, private _Activatedroute:ActivatedRoute) {
 		// Use the component constructor to inject providers.
 		page.actionBarHidden = true;
 		this.page = page;
@@ -34,19 +35,21 @@ export class DirectorComponent implements OnInit {
 
     ngOnInit(): void {
 		// Init your component properties here.
+		this.id = this._Activatedroute.snapshot.params['id'];
+		console.log(this.id);
 		this.directors = appSettings.getString("directors", "");
 		let directorsObj;
 		if (this.directors) {
 			directorsObj = JSON.parse(this.directors);
-			this.firstName = directorsObj[0].firstName;
-			this.lastName = directorsObj[0].lastName;
-			this.email = directorsObj[0].email;
-			this.al1 = directorsObj[0].al1;
-			this.al2 = directorsObj[0].al2;
-			this.city = directorsObj[0].city;
-			this.postal = directorsObj[0].postal;
-			this.country = directorsObj[0].country;
-			this.state = directorsObj[0].state;
+			this.firstName = directorsObj[this.id].firstName;
+			this.lastName = directorsObj[this.id].lastName;
+			this.email = directorsObj[this.id].email;
+			this.al1 = directorsObj[this.id].al1;
+			this.al2 = directorsObj[this.id].al2;
+			this.city = directorsObj[this.id].city;
+			this.postal = directorsObj[this.id].postal;
+			this.country = directorsObj[this.id].country;
+			this.state = directorsObj[this.id].state;
 		} else {
 			this.companyName = appSettings.getString("companyName", "");
 			this.companyType = appSettings.getString("companyType", "");

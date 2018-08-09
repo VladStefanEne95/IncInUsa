@@ -19,7 +19,6 @@ export class HomeComponent implements OnInit {
     constructor(private page: Page, private router: Router) {
 		// Use the component constructor to inject providers.
 		page.actionBarHidden = true;
-		this.page = page;
 		this.page.addCss("#step3 {visibility: collapsed}");
     }
 

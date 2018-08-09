@@ -182,10 +182,36 @@ components that have the btn class name.
 	background: linear-gradient(#DE0017, #0675e1);
 }
 
+.container-finish-title {
+	margin-left: 50;
+	margin-right: 50;
+	margin-top: 100;
+	margin-bottom: 30;
+	font-weight: 300;
+}
+
+.container-finish {
+	margin-left: 30;
+	margin-right: 30;
+	margin-top: 15;
+	margin-bottom: 15;
+	font-size: 16;
+}
+
 .container {
 	margin: 40;
 	font-size: 22;
 	color: white;
+}
+
+.green-label {
+	text-transform: uppercase;
+	color:  #33cc00;
+	font-weight: 600;
+	margin-left: 50;
+	margin-right: 50;
+	margin-top: 30;
+	text-align: center;
 }
 
 .h-line {

@@ -6,13 +6,13 @@ import { Observable } from "rxjs";
 @Injectable()
 export class PaymentService {
 
-  private submitUrl = "http://localhost:3000/";
+  private submitUrl = "http://c7d35988.ngrok.io/payment/";
   
   constructor(private http: HttpClient, private router: Router) { }
   
   submitToken(token: string) {
-	  console.log(token);
-	  return this.http.get("http://localhost:3000/test"); 	
+	console.log(token);
+	return this.http.get(`${this.submitUrl}${token}`); 	
   }
 
 }

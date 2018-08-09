@@ -24,6 +24,15 @@
 	border-radius: 7;
 	vertical-align: middle;
 }
+
+.card-quarter-number {
+	padding-top: 5;
+	padding-bottom: 5;
+	border-width: 0 0 1 0;
+	border-bottom-color: white;
+	font-size: 16;
+}
+
 	
 .form-text-left-payment {
     border-width: 0 0 1 0;
@@ -32,6 +41,7 @@
     padding-top: 5;
 	text-align: left;
 	margin-left: 20;
+	margin-right: 20;
 	padding-bottom: 5;
 	font-size: 16;
 	color:black;

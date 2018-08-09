@@ -2,6 +2,7 @@ import { NgModule, NgModuleFactoryLoader, NO_ERRORS_SCHEMA } from "@angular/core
 import { NativeScriptFormsModule } from "nativescript-angular/forms";
 import { NativeScriptModule } from "nativescript-angular/nativescript.module";
 import { PaymentService } from './services/payment/payment.service';
+import { IncorporationService } from './services/incorporation/incorporation.service';
 import { HttpClientModule } from '@angular/common/http';
 import { NativeScriptHttpModule } from "nativescript-angular/http";
 
@@ -26,7 +27,8 @@ import { AppComponent } from "./app.component";
         NO_ERRORS_SCHEMA
 	],
 	providers: [
-		PaymentService
+		PaymentService,
+		IncorporationService
 	]
 })
 export class AppModule { }
