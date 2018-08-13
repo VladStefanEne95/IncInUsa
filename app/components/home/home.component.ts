@@ -1,6 +1,7 @@
 import { Component, OnInit,ViewChild, ElementRef } from "@angular/core";
 import {Page} from "ui/page";
 import { Router } from '@angular/router';
+import { StartService } from './../../services/start/start.service'
 
 const plugin = require("nativescript-uuid");
 var appSettings = require("application-settings");
@@ -16,7 +17,7 @@ export class HomeComponent implements OnInit {
 	viewType :number;
 
 	//@ViewChild("step2") step2: ElementRef;
-    constructor(private page: Page, private router: Router) {
+    constructor(private page: Page, private router: Router, private StartService: StartService) {
 		// Use the component constructor to inject providers.
 		page.actionBarHidden = true;
 		this.page.addCss("#step3 {visibility: collapsed}");
@@ -24,11 +25,13 @@ export class HomeComponent implements OnInit {
 
     ngOnInit(): void {
 		// Init your component properties here.
-		this.companyUuid = appSettings.getString("companyUuid", "");
+		this.companyUuid = appSettings.getString("uuid", "");
 		if (this.companyUuid == "")
 			this.viewType = 1;
 		else
 			this.viewType = 2;
+		this.StartService.refreshStatus(this.companyUuid).subscribe()
+		appSettings.setString("status", );
 	}
 	public oldInc() {
 		alert("good for you");
@@ -45,7 +48,7 @@ export class HomeComponent implements OnInit {
 	
 	public start(){
 		var uuid = plugin.getUUID();
-		appSettings.setString("companyUuid", uuid);
+		appSettings.setString("uuid", uuid);
 		appSettings.setString("companyName", "");
 		appSettings.setString("companyType", "");
 		appSettings.setString("firstName", "");

@@ -4,17 +4,13 @@ import { Router } from '@angular/router';
 import { Observable } from "rxjs";
 
 @Injectable()
-export class PaymentService {
+export class StartService {
 
-  private submitUrl = "http://2e498c7f.ngrok.io/payment/";
+  private submitUrl = "http://2e498c7f.ngrok.io/incorporation-data/refresh/";
   
   constructor(private http: HttpClient, private router: Router) { }
   
-  submitToken(token: string) {
-	console.log(token);
-	let headears = new HttpHeaders();
-	headears.append('Content-Type', 'application/json');
-	return this.http.post(this.submitUrl, {stripeToken: token}); 	
+  refreshStatus(uuid) {
+	return this.http.get(this.submitUrl + uuid); 	
   }
-
 }

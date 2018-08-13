@@ -202,7 +202,7 @@ export class PaymentComponent implements OnInit {
 			// 	alert("incorect card data");
 			// }
 			// });
-			this.IncorporationService.submitData(this.firstName, this.lastName, this.email, this.al1, this.al2, this.city, this.postal, this.country, this.state, this.directors, this.uuid)
+			this.IncorporationService.submitData(this.firstName, this.lastName, this.email, this.al1, this.al2, this.city, this.postal, this.country, this.state, this.directors, this.uuid, this.companyName, this.companyType)
 			.subscribe(
 				response => console.log(response),
 				error => console.log(error)

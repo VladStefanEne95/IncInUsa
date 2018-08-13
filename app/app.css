@@ -77,6 +77,10 @@ components that have the btn class name.
 .topmenu-title {
     font-size: 20;
 }
+.topmenu-title-2 {
+	font-size: 18;
+	font-weight: 400;
+}
 .topmenu-step {
     color:#d9d9d9;
 }

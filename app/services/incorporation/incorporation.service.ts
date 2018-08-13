@@ -6,11 +6,11 @@ import { Observable } from "rxjs";
 @Injectable()
 export class IncorporationService {
 
-  private submitUrl = "http://a891c9ec.ngrok.io/payment/";
+  private submitUrl = "http://2e498c7f.ngrok.io/incorporation-data/";
   
   constructor(private http: HttpClient, private router: Router) { }
   
-  submitData(firstName, lastName, email, al1, al2, city, postal, country, state, directors, uuid) {
+  submitData(firstName, lastName, email, al1, al2, city, postal, country, state, directors, uuid, companyName, companyType) {
 
 	console.log(uuid);
 	  let data = {
@@ -24,7 +24,9 @@ export class IncorporationService {
 		"country": country, 
 		"state": state, 
 		"uuid": uuid,
-		"directors": directors
+		"directors": directors,
+		"companyName": companyName,
+		"companyType": companyType
 	  }
 	  let body = JSON.stringify(data);
 	  let headears = new HttpHeaders();

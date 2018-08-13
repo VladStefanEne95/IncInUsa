@@ -1,0 +1,23 @@
+.container-company {
+	margin-left: 20;
+	margin-right: 20;
+	padding-bottom: 30;
+	border-bottom-width: 1;
+	border-bottom-color: gray;
+}
+.small-gray {
+	color: gray;
+	font-weight: 400;
+	font-size: 16;
+}
+
+.left-manage-title {
+	color: black;
+	font-weight: 500;
+	font-size: 18;
+}
+.left-manage-status {
+	color: black;
+	font-weight: 400;
+	font-size: 16;
+}
