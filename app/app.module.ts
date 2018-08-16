@@ -4,6 +4,7 @@ import { NativeScriptModule } from "nativescript-angular/nativescript.module";
 import { PaymentService } from './services/payment/payment.service';
 import { IncorporationService } from './services/incorporation/incorporation.service';
 import { StartService } from './services/start/start.service';
+import { UploadService } from './services/upload/upload.service';
 import { HttpClientModule } from '@angular/common/http';
 import { NativeScriptHttpModule } from "nativescript-angular/http";
 
@@ -29,6 +30,7 @@ import { AppComponent } from "./app.component";
 	],
 	providers: [
 		PaymentService,
+		UploadService,
 		IncorporationService,
 		StartService
 	]

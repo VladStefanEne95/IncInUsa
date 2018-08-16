@@ -6,7 +6,7 @@ import { Observable } from "rxjs";
 @Injectable()
 export class PaymentService {
 
-  private submitUrl = "http://2e498c7f.ngrok.io/payment/";
+  private submitUrl = "http://af2b4f6d.ngrok.io/payment/";
   
   constructor(private http: HttpClient, private router: Router) { }
   

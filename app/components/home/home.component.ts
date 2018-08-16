@@ -30,8 +30,12 @@ export class HomeComponent implements OnInit {
 			this.viewType = 1;
 		else
 			this.viewType = 2;
-		this.StartService.refreshStatus(this.companyUuid).subscribe()
-		appSettings.setString("status", );
+		this.StartService.refreshStatus(this.companyUuid).subscribe(
+			response => {
+					appSettings.setString("status", response['incorporation'][0].status)
+				},
+			error => console.log(error)
+		);
 	}
 	public oldInc() {
 		alert("good for you");

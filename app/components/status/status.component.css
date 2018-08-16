@@ -1,0 +1,18 @@
+.blue-text {
+	color: #0675e1;
+	text-align: right;
+	background-color: white;
+	margin-top: 20;
+	font-size: 16;
+}
+
+.container-status {
+	margin: 20;
+}
+
+.right-gray-small-text {
+	margin-top: 20;
+	color: gray;
+	font-size: 14;
+	text-align: right;
+}

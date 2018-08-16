@@ -1,8 +1,8 @@
 import { NgModule, NO_ERRORS_SCHEMA } from "@angular/core";
 import { NativeScriptCommonModule } from "nativescript-angular/common";
 import { NativeScriptFormsModule } from "nativescript-angular/forms";
-import { ManageRoutingModule } from "./manage-routing.module";
-import { ManageComponent } from "./manage.component";
+import { StatusRoutingModule } from "./status-routing.module";
+import { StatusComponent } from "./status.component";
 
 import { SharedModule } from './../../shared.module';
 
@@ -10,14 +10,14 @@ import { SharedModule } from './../../shared.module';
     imports: [
 		NativeScriptCommonModule,
 		NativeScriptFormsModule,
-		ManageRoutingModule,
+		StatusRoutingModule,
 		SharedModule
     ],
     declarations: [
-        ManageComponent
+        StatusComponent
     ],
     schemas: [
         NO_ERRORS_SCHEMA
     ]
 })
-export class ManageModule { }
+export class StatusModule { }

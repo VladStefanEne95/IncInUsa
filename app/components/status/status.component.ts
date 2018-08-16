@@ -8,12 +8,12 @@ const plugin = require("nativescript-uuid");
 var appSettings = require("application-settings");
 
 @Component({
-    selector: "Manage",
+    selector: "Status",
     moduleId: module.id,
-	templateUrl: "./manage.component.html",
-	styleUrls: ['./manage.component.css']
+	templateUrl: "./status.component.html",
+	styleUrls: ['./status.component.css']
 })
-export class ManageComponent implements OnInit {
+export class StatusComponent implements OnInit {
 
 	companyName: string;
 	companyType :string;
@@ -46,9 +46,5 @@ export class ManageComponent implements OnInit {
 	
 	public done(){
 		alert("to do");
-	}
-
-	public viewStatus() {
-		this.router.navigate(['/status/' + this.companyUuid]);
 	}
 }

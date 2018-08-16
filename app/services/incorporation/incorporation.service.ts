@@ -6,7 +6,7 @@ import { Observable } from "rxjs";
 @Injectable()
 export class IncorporationService {
 
-  private submitUrl = "http://2e498c7f.ngrok.io/incorporation-data/";
+  private submitUrl = "http://af2b4f6d.ngrok.io/incorporation-data/";
   
   constructor(private http: HttpClient, private router: Router) { }
   

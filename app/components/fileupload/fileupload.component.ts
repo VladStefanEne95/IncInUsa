@@ -10,6 +10,7 @@ import { Observable } from "rxjs";
 import {Page} from "ui/page";
 import { SelectedIndexChangedEventData } from "nativescript-drop-down";
 const imageSourceModule = require("tns-core-modules/image-source")
+import { UploadService } from './../../services/upload/upload.service'
 
 var appSettings = require("application-settings");
 
@@ -31,8 +32,9 @@ export class FileuploadComponent implements OnInit {
 	previewSize: number = 200;
 	docType :string;
 	docNumber :number;
+	uuid :string;
 
-	constructor(private page: Page) {
+	constructor(private page: Page, private UploadService: UploadService) {
 		page.actionBarHidden = true;
 		this.items = [];
 	}
@@ -42,6 +44,8 @@ export class FileuploadComponent implements OnInit {
 		this.page.addCss("#step2 {visibility: collapsed}");
 		this.items.push("Second");
 		this.items.push("Passaport");
+		this.uuid = appSettings.getString("uuid", "");
+		Camera.requestPermissions();
 	}
 	
 	public onchange(args: SelectedIndexChangedEventData) {
@@ -78,8 +82,6 @@ export class FileuploadComponent implements OnInit {
     }
 
     private startSelection(context) {
-		appSettings.setString("stringKey", "String value");  // Writing
-        let that = this;
 		let session = bghttp.session("image-upload");
         context
         .authorize()
@@ -87,56 +89,30 @@ export class FileuploadComponent implements OnInit {
             return context.present();
         })
         .then((selection) => {
-			that.imageSrc = selection.length > 0 ? selection[0] : null;
+			this.imageSrc = selection.length > 0 ? selection[0] : null;
 			this.imageSelected = true;
-
-			that.upload("http://httpbin.org/post", that.imageSrc['_android']);
+			//check for ios
+			this.upload("http://af2b4f6d.ngrok.io/upload", this.imageSrc['_android']);
         }).catch(function (e) {
             console.log(e);
         });
 	}
 	
 	public takePicture() {
-		console.log("start");
 		Camera.takePicture({saveToGallery: false, width: 320, height: 240 }).then(picture => {
 			let folder = FileSystem.knownFolders.documents();
 			let path = FileSystem.path.join(folder.path, (new Date()) + ".png");
 			imageSourceModule.fromAsset(picture)
 			.then(imageSource => {
 				 let saved = imageSource.saveToFile(path, "png");
-				 console.log(saved);
 				 this.imageSelected = true;
 				 this.imageSrc = path;
 				 this.imageSelected = true;
-				 this.upload("http://httpbin.org/post", path);
+				 this.upload("http://af2b4f6d.ngrok.io/upload", path);
 			 });
 		});
 	}
-	public extractImageName(fileUri) {
-		var pattern = /[^/]*$/;
-		var imageName = fileUri.match(pattern);
-	
-		return imageName;
-	}
 	public upload(destination: string, filepath: string) {
-            let session = bghttp.session("image-upload");
-			let imageName = this.extractImageName(filepath);
-
-			var request = {
-				url: "http://httpbin.org/post",
-				method: "POST",
-				headers: {
-					"Content-Type": "application/octet-stream",
-					"File-Name": imageName
-				},
-				description: "{ 'uploading': " + imageName + " }"
-			};
-			let task = session.uploadFile(filepath, request);
-			task.on("complete", (event) => {
-				console.log("complete");
-			});
-			task.on("error", event => {
-				console.log(event);
-			});
+		this.UploadService.uploadImage(destination, filepath);
 	}
 }
