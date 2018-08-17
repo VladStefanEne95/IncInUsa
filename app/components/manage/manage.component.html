@@ -10,15 +10,17 @@
 				<Label class="topmenu-logo" row="0" col="2" text="LOGO" ></Label>
 			</GridLayout>
 		</StackLayout>
-		<StackLayout (tap)="viewStatus()" class="container-company">
-				<GridLayout rows="*" columns="*, *" >
+		<StackLayout *ngFor="let serverArrElem of serverArr">
+			<StackLayout *ngIf="serverArrElem"  (tap)="viewStatus()" class="container-company">
+				<GridLayout  rows="*" columns="*, *" >
 					<StackLayout row="0" col="0">
-						<Label text="{{companyName}} {{companyType}}" class="left-manage-title"></Label>
-						<Label text="{{status}}" class="left-manage-status"></Label>
+						<Label text="{{serverArrElem.companyName}} {{serverArrElem.companyType}}" class="left-manage-title"></Label>
+						<Label textWrap="true" text="{{ serverArrElem.status}}" class="left-manage-status"></Label>
 					</StackLayout>
-					<Label row ="0" col="1" class="small-gray" textWrap='true' style="vertical-align:center; text-align:right;" text="Last updated {{ updatedAt | date: 'yyyy/MM/dd h:mm:ss a' | statusUpdate }} >"></Label>
+					<Label row ="0" col="1" class="small-gray" textWrap='true' style="vertical-align:center; text-align:right;" text="Last updated {{ serverArrElem.updatedAt | date: 'yyyy/MM/dd h:mm:ss a' | statusUpdate }} >"></Label>
 				</GridLayout>
 				<Label class="small-gray" text="We are reviewing your application and will contact you in 3-5 business days." textWrap="true" ></Label> 
+			</StackLayout>
 		</StackLayout>
 		<Button text="Start new incorporation" style="margin-top:40" class="green-button" (tap)="done()"  ></Button>
 	</StackLayout>

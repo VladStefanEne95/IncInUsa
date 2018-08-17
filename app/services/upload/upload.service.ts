@@ -8,7 +8,7 @@ import * as bghttp from "nativescript-background-http";
 @Injectable()
 export class UploadService {
 
-  private submitUrl = "http://af2b4f6d.ngrok.io/incorporation-data/refresh/";
+  private submitUrl = "http://38a1be63.ngrok.io/incorporation-data/refresh/";
   
   constructor(private http: HttpClient, private router: Router) { }
  

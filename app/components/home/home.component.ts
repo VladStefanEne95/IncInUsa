@@ -3,7 +3,6 @@ import {Page} from "ui/page";
 import { Router } from '@angular/router';
 import { StartService } from './../../services/start/start.service'
 
-const plugin = require("nativescript-uuid");
 var appSettings = require("application-settings");
 
 @Component({
@@ -15,8 +14,8 @@ export class HomeComponent implements OnInit {
 
 	companyUuid :string;
 	viewType :number;
+	uuidString :any;
 
-	//@ViewChild("step2") step2: ElementRef;
     constructor(private page: Page, private router: Router, private StartService: StartService) {
 		// Use the component constructor to inject providers.
 		page.actionBarHidden = true;
@@ -26,6 +25,7 @@ export class HomeComponent implements OnInit {
     ngOnInit(): void {
 		// Init your component properties here.
 		this.companyUuid = appSettings.getString("uuid", "");
+		this.uuidString = appSettings.getString("uuidString", "");
 		if (this.companyUuid == "")
 			this.viewType = 1;
 		else
@@ -37,21 +37,30 @@ export class HomeComponent implements OnInit {
 			error => console.log(error)
 		);
 	}
+
+	public generateUuid() {
+		return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+		  var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
+		  return v.toString(16);
+		});
+	  }
 	public oldInc() {
 		alert("good for you");
 	}
 
 	public continue(): void {
-		var uuid = plugin.getUUID();
-		appSettings.setString("companyUuid", uuid);
-		console.log("The device UUID is " + uuid);
 		this.router.navigate(["/details"]);
-		// this.page.addCss("#step3 {visibility: collapsed}");
-		// this.page.addCss("#step2 {visibility: visible}");
 	}
 	
 	public start(){
-		var uuid = plugin.getUUID();
+
+		let uuid = this.generateUuid();
+		console.log(uuid);
+		let uuidArr = [];
+		uuidArr = this.uuidString.split(",");
+		uuidArr.push(uuid);
+		this.uuidString = uuidArr.toString();
+		appSettings.setString("uuidString", this.uuidString);
 		appSettings.setString("uuid", uuid);
 		appSettings.setString("companyName", "");
 		appSettings.setString("companyType", "");

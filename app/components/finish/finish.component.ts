@@ -12,18 +12,28 @@ var appSettings = require("application-settings");
 })
 export class FinishComponent implements OnInit {
 
-
-	//@ViewChild("step2") step2: ElementRef;
     constructor(private page: Page, private router: Router) {
-		// Use the component constructor to inject providers.
 		page.actionBarHidden = true;
     }
 
     ngOnInit(): void {
-		// Init your component properties here.
+		
+		appSettings.setString("companyName", "");
+		appSettings.setString("companyType", "");
+		appSettings.setString("firstName", "");
+		appSettings.setString("lastName", ""), 
+		appSettings.setString("uuid", "");
+		appSettings.setString("email", "");
+		appSettings.setString("al1", "");
+		appSettings.setString("al2", "");
+		appSettings.setString("city", "");
+		appSettings.setString("postal", 0);
+		appSettings.setString("country", "");
+		appSettings.setString("state", "");
+		appSettings.setString("directors", "");
 	
 	}
 	public viewAppStatus() {
-		alert("TO DO");
+		this.router.navigate(["/manage"]);
 	}
 }
