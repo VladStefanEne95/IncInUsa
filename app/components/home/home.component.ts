@@ -3,6 +3,8 @@ import {Page} from "ui/page";
 import { Router } from '@angular/router';
 import { StartService } from './../../services/start/start.service'
 
+import * as dialogs from "ui/dialogs";
+
 var appSettings = require("application-settings");
 
 @Component({
@@ -45,8 +47,25 @@ export class HomeComponent implements OnInit {
 		});
 	  }
 	public oldInc() {
-		alert("good for you");
+		dialogs.prompt({
+			title: "Application Number",
+			cancelButtonText: "Cancel",
+			neutralButtonText: "Done",
+			defaultText: ""
+		}).then(r => {
+			this.StartService.refreshStatus(r.text).subscribe(
+				response => {
+					let uuidArr = this.uuidString.split(",");
+					uuidArr.push(r.text);
+					this.uuidString = uuidArr.toString();
+					appSettings.setString("uuidString", this.uuidString);
+					this.router.navigate(["/manage"]);
+				},
+				error => console.log(error)
+			);
+		});
 	}
+	
 
 	public continue(): void {
 		this.router.navigate(["/details"]);
@@ -55,7 +74,6 @@ export class HomeComponent implements OnInit {
 	public start(){
 
 		let uuid = this.generateUuid();
-		console.log(uuid);
 		let uuidArr = [];
 		uuidArr = this.uuidString.split(",");
 		uuidArr.push(uuid);
