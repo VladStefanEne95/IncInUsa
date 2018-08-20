@@ -66,9 +66,18 @@
 					autocorrect="false" ></TextField>
 			</GridLayout>
 			
+			
 			<CheckBox #CB1 id="CB1" text="Add me to the List of Directors of {{companyName}} {{companyType}}" row="0" col="0" class="radio-button"  ngDefaultControl></CheckBox>
 			<Label class="label-text" textWrap="true" text="You will be able to add more directors later."></Label>
 			<Button text="NEXT" class="green-button" (tap)="step3()"  ></Button>
+
+			<StackLayout>
+				<Label text="Whats your favorite programming language?"></Label>
+				<Button text="Choose a Language" (tap)="showPicker()"></Button>
+			</StackLayout>
+			<FilterableListpicker #myfilter blur="dark" hintText="Type to filter..." [source]="listitems" (canceled)="cancelFilterableList($event)" (itemTapped)="itemTapped($event)"></FilterableListpicker>
+
+
 		</StackLayout>
 	</StackLayout>
 

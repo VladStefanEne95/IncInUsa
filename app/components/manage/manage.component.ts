@@ -20,19 +20,15 @@ export class ManageComponent implements OnInit {
 	companyUuid :string;
 	uuidString :string;
 	uuidArr :any;
-	serverArr :any;
-	updatedAt :any;
+	serverArr :Array<any>;
 	status :string;
 
-	//@ViewChild("step2") step2: ElementRef;
     constructor(private page: Page, private router: Router, private _Activatedroute:ActivatedRoute, private StartService: StartService) {
-		// Use the component constructor to inject providers.
 		page.actionBarHidden = true;
 		this.page = page;
     }
 
     ngOnInit(): void {
-		// Init your component properties here.
 		this.companyName = appSettings.getString("companyName", "");
 		this.companyType = appSettings.getString("companyType", "");
 		this.uuidString = appSettings.getString("uuidString", "");
@@ -57,7 +53,7 @@ export class ManageComponent implements OnInit {
 							this.serverArr[i].companyName = response['incorporation'][0].companyName;
 							this.serverArr[i].companyType = response['incorporation'][0].companyType;
 							this.serverArr[i].updatedAt = response['incorporation'][0].updatedAt;
-							console.log(this.serverArr[i].status, this.serverArr[i].updatedAt);
+							this.serverArr[i].uuid = response['incorporation'][0].uuid;
 							i++;
 						},
 					error => console.log(error)
@@ -70,7 +66,7 @@ export class ManageComponent implements OnInit {
 		alert("to do");
 	}
 
-	public viewStatus() {
-		this.router.navigate(['/status/' + this.companyUuid]);
+	public viewStatus(companyUuid :string) {
+		this.router.navigate(['/status/' + companyUuid]);
 	}
 }

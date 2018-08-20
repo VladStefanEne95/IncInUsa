@@ -15,33 +15,35 @@ var appSettings = require("application-settings");
 })
 export class StatusComponent implements OnInit {
 
+	uuid :string;
 	companyName: string;
 	companyType :string;
-	companyUuid :string;
 	updatedAt :any;
-	status :string;
+	status :any;
 
-	//@ViewChild("step2") step2: ElementRef;
+
     constructor(private page: Page, private router: Router, private _Activatedroute:ActivatedRoute, private StartService: StartService) {
-		// Use the component constructor to inject providers.
 		page.actionBarHidden = true;
 		this.page = page;
     }
 
     ngOnInit(): void {
-		// Init your component properties here.
-		this.companyName = appSettings.getString("companyName", "");
-		this.companyType = appSettings.getString("companyType", "");
-		this.companyUuid = appSettings.getString("uuid", "");
-		this.status = appSettings.getString("status", "");
-		this.StartService.refreshStatus(this.companyUuid).subscribe(
+		this.uuid = this._Activatedroute.snapshot.params['id'];
+		this.StartService.refreshStatus(this.uuid).subscribe(
 			response => {
-					appSettings.setString("status", response['incorporation'][0].status)
-					this.status = response['incorporation'][0].status;
-					this.updatedAt = response['incorporation'][0].updatedAt;
-				},
+				this.status = response['status'];
+				if (this.status)
+					console.log(this.status);
+				this.companyName = response['incorporation'][0].companyName;
+				this.companyType = response['incorporation'][0].companyType;
+				this.updatedAt = response['incorporation'][0].updatedAt;
+			},
 			error => console.log(error)
 		);
+	}
+
+	public viewApplication(uuid) {
+		this.router.navigate(["/application", uuid]);
 	}
 	
 	public done(){

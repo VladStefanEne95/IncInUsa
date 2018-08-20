@@ -8,8 +8,12 @@ import { UploadService } from './services/upload/upload.service';
 import { HttpClientModule } from '@angular/common/http';
 import { NativeScriptHttpModule } from "nativescript-angular/http";
 
+
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
+
+import {registerElement} from "nativescript-angular/element-registry";
+registerElement("FilterableListpicker", () => require("nativescript-filterable-listpicker").FilterableListpicker);
 
 @NgModule({
     bootstrap: [

@@ -5,7 +5,7 @@
 					<Label class="topmenu-back" row="0" col="0" text="<" ></Label>
 					<StackLayout row="0" col="1">
 						<Label class="topmenu-step" text="Manage Company" ></Label>
-						<Label class="topmenu-title" text="IncInUSA LLC" ></Label>
+						<Label class="topmenu-title" text="{{companyName}} {{companyType}}" ></Label>
 					</StackLayout>
 					<Label class="topmenu-logo" row="0" col="2" text="LOGO" ></Label>
 				</GridLayout>
@@ -13,22 +13,31 @@
 		<StackLayout class="container-status">
 			<GridLayout rows="*" columns="*,*">
 					<Label row="0" col="0" class="h2" text="Status" ></Label>
-					<Label class="blue-text" row="0" col="1" text="View Application" ></Label>
+					<Label  (tap)="viewApplication(uuid)" class="blue-text" row="0" col="1" text="View Application" ></Label>
 			</GridLayout>
-			<GridLayout rows="*" columns="*,*">
+			<StackLayout *ngIf="status">
+			<GridLayout *ngIf="status.submited" rows="*" columns="*,*">
 				<StackLayout row="0" col="0">
-					<Label class="h2" text="IncInUSA" ></Label>
-					<Label text="Application Submited" ></Label>
+					<Label class="h2" text="{{companyName}} {{companyType}}" ></Label>
+					<Label textWrap="true" text="Application Submitted" ></Label>
 				</StackLayout>
-				<Label class="right-gray-small-text" row="0" col="1" text="Yesterday" ></Label>
+				<Label class="right-gray-small-text" row="0" col="1" text="{{ status.submitedDate | date: 'yyyy/MM/dd h:mm:ss a' | statusUpdate }}" ></Label>
 			</GridLayout>
-			<GridLayout rows="*" columns="*,*">
+			<GridLayout *ngIf="status.payed" rows="*" columns="*,*">
 				<StackLayout row="0" col="0">
-					<Label class="h2" text="IncInUSA" ></Label>
-					<Label text="Application Submited" ></Label>
+					<Label class="h2" text="{{companyName}} {{companyType}}" ></Label>
+					<Label textWrap="true" text="Payment Accepted" ></Label>
 				</StackLayout>
-				<Label class="right-gray-small-text" row="0" col="1" text="Yesterday" ></Label>
+				<Label class="right-gray-small-text" row="0" col="1" text="{{ status.payedDate | date: 'yyyy/MM/dd h:mm:ss a' | statusUpdate }}" ></Label>
 			</GridLayout>
+			<GridLayout *ngIf="status.reviewed" rows="*" columns="*,*">
+				<StackLayout row="0" col="0">
+					<Label class="h2" text="{{companyName}} {{companyType}}" ></Label>
+					<Label textWrap="true" text="We are reviewing your application." ></Label>
+				</StackLayout>
+				<Label class="right-gray-small-text" row="0" col="1" text="{{ status.reviewedDate | date: 'yyyy/MM/dd h:mm:ss a' | statusUpdate }}" ></Label>
+			</GridLayout>
+		</StackLayout>
 		</StackLayout>
 	</StackLayout>
 </ScrollView>

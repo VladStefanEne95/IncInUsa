@@ -11,7 +11,7 @@
 			</GridLayout>
 		</StackLayout>
 		<StackLayout *ngFor="let serverArrElem of serverArr">
-			<StackLayout *ngIf="serverArrElem"  (tap)="viewStatus()" class="container-company">
+			<StackLayout *ngIf="serverArrElem"  (tap)="viewStatus(serverArrElem.uuid)" class="container-company">
 				<GridLayout  rows="*" columns="*, *" >
 					<StackLayout row="0" col="0">
 						<Label text="{{serverArrElem.companyName}} {{serverArrElem.companyType}}" class="left-manage-title"></Label>

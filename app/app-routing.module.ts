@@ -14,6 +14,7 @@ const routes: Routes = [
 	{ path: "payment", loadChildren: "./components/payment/payment.module#PaymentModule" },
 	{ path: "manage", loadChildren: "./components/manage/manage.module#ManageModule" },
 	{ path: "status/:id", loadChildren: "./components/status/status.module#StatusModule" },
+	{ path: "application/:id", loadChildren: "./components/application/application.module#ApplicationModule" },
 	{ path: "fileupload", loadChildren: "./components/fileupload/fileupload.module#FileuploadModule" }
 ];
 
