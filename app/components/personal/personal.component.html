@@ -1,74 +1,76 @@
 
 <ScrollView>
-	<StackLayout orientation="vertical">
-		<StackLayout id="step2">
-			<StackLayout>
-				<GridLayout rows="*" columns="50,*, 50" class="topmenu-grid" style="margin-bottom:0">
-					<Label class="topmenu-back" row="0" col="0" text="<" ></Label>
-					<StackLayout row="0" col="1">
-						<Label class="topmenu-step" text="STEP 2/5" ></Label>
-						<Label class="topmenu-title" text="Personal information" ></Label>
-					</StackLayout>
-					<Label class="topmenu-logo" row="0" col="2" text="LOGO" ></Label>
+		<StackLayout orientation="vertical">
+			<StackLayout id="step2">
+				<StackLayout>
+					<GridLayout rows="*" columns="50,*, 50" class="topmenu-grid" style="margin-bottom:0">
+						<Label class="topmenu-back" row="0" col="0" text="<" ></Label>
+						<StackLayout row="0" col="1">
+							<Label class="topmenu-step" text="STEP 2/5" ></Label>
+							<Label class="topmenu-title" text="Personal information" ></Label>
+						</StackLayout>
+						<Label class="topmenu-logo" row="0" col="2" text="LOGO" ></Label>
+					</GridLayout>
+				</StackLayout>
+	
+				<GridLayout rows="*" columns="*,*" class="grid-form">
+					<Label class="form-label" row="0" col="0" text="First Name" ></Label>
+					<TextField class="form-text" row="0" col="1" [(ngModel)]="firstName" hint="Enter first name" ></TextField>
 				</GridLayout>
+				<GridLayout rows="*" columns="*,*" class="grid-form">
+					<Label class="form-label" row="0" col="0" text="Last name" ></Label>
+					<TextField class="form-text" row="0" col="1" [(ngModel)]="lastName" hint="Enter last name" ></TextField>
+				</GridLayout>
+				<GridLayout rows="*" columns="*,*" class="grid-form">
+					<Label class="form-label" row="0" col="0" text="Email" ></Label>
+					<TextField class="form-text" row="0" col="1" [(ngModel)]="email" hint="Enter email"  keyboardType="email"
+					autocorrect="false" ></TextField>
+				</GridLayout>
+	
+				<GridLayout rows="*" columns="*,*" class="grid-form">
+						<Label class="form-label" row="0" col="0" text="Adress line 1" ></Label>
+						<TextField class="form-text" row="0" col="1" [(ngModel)]="al1" hint="Enter adress"  
+						autocorrect="false" ></TextField>
+				</GridLayout>
+	
+				<GridLayout rows="*" columns="*,*" class="grid-form">
+						<Label class="form-label" row="0" col="0" text="Adress Line 2" ></Label>
+						<TextField class="form-text" row="0" col="1" [(ngModel)]="al2" hint="Enter adress" 
+						autocorrect="false" ></TextField>
+				</GridLayout>
+	
+				<GridLayout rows="*" columns="*,*" class="grid-form">
+						<Label class="form-label" row="0" col="0" text="City" ></Label>
+						<TextField class="form-text" row="0" col="1" [(ngModel)]="city" hint="Enter city" 
+						autocorrect="false" ></TextField>
+				</GridLayout>
+	
+				<GridLayout rows="*" columns="*,*" class="grid-form">
+						<Label class="form-label" row="0" col="0" text="Postal Code" ></Label>
+						<TextField class="form-text" row="0" col="1" [(ngModel)]="postal" hint="Enter postal code"  keyboardType="number"
+						autocorrect="false" ></TextField>
+				</GridLayout>
+	
+				<GridLayout rows="*" columns="*,*" class="grid-form">
+						<Label class="form-label" row="0" col="0" text="Country" ></Label>
+						<Label class="form-text" textWrap="true" (tap)="showPicker()" row="0" col="1" text="{{emoji}} {{country}}"  
+						autocorrect="false" ></Label>
+				</GridLayout>
+	
+				<GridLayout rows="*" columns="*,*" class="grid-form">
+						<Label class="form-label" row="0" col="0" text="State" ></Label>
+						<TextField *ngIf="country!='United States'" class="form-text" row="0" col="1" [(ngModel)]="state" hint="Enter state" 
+						autocorrect="false" ></TextField>
+						<Label *ngIf="country=='United States'" (tap)="showPickerStates()" class="form-text" row="0" col="1" text="{{state}}" 
+						autocorrect="false" ></Label>
+				</GridLayout>
+				
+				
+				<CheckBox #CB1 id="CB1" text="Add me to the List of Directors of {{companyName}} {{companyType}}" row="0" col="0" class="radio-button"  ngDefaultControl></CheckBox>
+				<Label class="label-text" textWrap="true" text="You will be able to add more directors later."></Label>
+				<Button text="NEXT" class="green-button" (tap)="step3()"  ></Button>
 			</StackLayout>
-
-			<GridLayout rows="*" columns="*,*" class="grid-form">
-				<Label class="form-label" row="0" col="0" text="First Name" ></Label>
-				<TextField class="form-text" row="0" col="1" [(ngModel)]="firstName" hint="Enter first name" ></TextField>
-			</GridLayout>
-			<GridLayout rows="*" columns="*,*" class="grid-form">
-				<Label class="form-label" row="0" col="0" text="Last name" ></Label>
-				<TextField class="form-text" row="0" col="1" [(ngModel)]="lastName" hint="Enter last name" ></TextField>
-			</GridLayout>
-			<GridLayout rows="*" columns="*,*" class="grid-form">
-				<Label class="form-label" row="0" col="0" text="Email" ></Label>
-				<TextField class="form-text" row="0" col="1" [(ngModel)]="email" hint="Enter email"  keyboardType="email"
-				autocorrect="false" ></TextField>
-			</GridLayout>
-
-			<GridLayout rows="*" columns="*,*" class="grid-form">
-					<Label class="form-label" row="0" col="0" text="Adress line 1" ></Label>
-					<TextField class="form-text" row="0" col="1" [(ngModel)]="al1" hint="Enter adress"  
-					autocorrect="false" ></TextField>
-			</GridLayout>
-
-			<GridLayout rows="*" columns="*,*" class="grid-form">
-					<Label class="form-label" row="0" col="0" text="Adress Line 2" ></Label>
-					<TextField class="form-text" row="0" col="1" [(ngModel)]="al2" hint="Enter adress" 
-					autocorrect="false" ></TextField>
-			</GridLayout>
-
-			<GridLayout rows="*" columns="*,*" class="grid-form">
-					<Label class="form-label" row="0" col="0" text="City" ></Label>
-					<TextField class="form-text" row="0" col="1" [(ngModel)]="city" hint="Enter city" 
-					autocorrect="false" ></TextField>
-			</GridLayout>
-
-			<GridLayout rows="*" columns="*,*" class="grid-form">
-					<Label class="form-label" row="0" col="0" text="Postal Code" ></Label>
-					<TextField class="form-text" row="0" col="1" [(ngModel)]="postal" hint="Enter postal code"  keyboardType="number"
-					autocorrect="false" ></TextField>
-			</GridLayout>
-
-			<GridLayout rows="*" columns="*,*" class="grid-form">
-					<Label class="form-label" row="0" col="0" text="Country" ></Label>
-					<Label class="form-text" textWrap="true" (tap)="showPicker()" row="0" col="1" text="{{emoji}} {{country}}"  
-					autocorrect="false" ></Label>
-			</GridLayout>
-
-			<GridLayout rows="*" columns="*,*" class="grid-form">
-					<Label class="form-label" row="0" col="0" text="State" ></Label>
-					<TextField class="form-text" row="0" col="1" [(ngModel)]="state" hint="Enter state" 
-					autocorrect="false" ></TextField>
-			</GridLayout>
-			
-			
-			<CheckBox #CB1 id="CB1" text="Add me to the List of Directors of {{companyName}} {{companyType}}" row="0" col="0" class="radio-button"  ngDefaultControl></CheckBox>
-			<Label class="label-text" textWrap="true" text="You will be able to add more directors later."></Label>
-			<Button text="NEXT" class="green-button" (tap)="step3()"  ></Button>
 		</StackLayout>
-	</StackLayout>
-</ScrollView>
-		<FilterableListpicker #myfilter blur="dark" hintText="FIlter" [source]="countryList" (canceled)="cancelFilterableList($event)" (itemTapped)="itemTapped($event)"></FilterableListpicker>
-
+	</ScrollView>
+			<FilterableListpicker #myfilter blur="dark" hintText="FIlter" [source]="countryList" (canceled)="cancelFilterableList($event)" (itemTapped)="itemTapped($event)"></FilterableListpicker>
+	
