@@ -11,7 +11,8 @@ import * as platform from "platform";
 
 declare const STPPaymentConfiguration;
 
-
+import { Fontawesome } from 'nativescript-fontawesome';
+Fontawesome.init();
 
 app.on(app.launchEvent, (args) => {
     if (platform.isIOS) {

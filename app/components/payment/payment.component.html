@@ -35,7 +35,7 @@
 				<GridLayout r0w="0" col="0" rows="*" columns="*, 20,*"  >
 					<GridLayout rows="*" columns="auto,auto,auto" class="card-number">
 							<TextField #cardMonthId row="0" col="0" class="form-text-left-payment remove-white-space exp-month"   [ngModel]='cardMonth' (ngModelChange)='dateChanged($event)'   hint="MM"  keyboardType="number"
-							autocorrect="false" ></TextField>
+							autocorrect="false" ></TextField> 
 							<Label row="0" col="1" text="/" style="vertical-align:middle;"></Label>
 							<TextField #cardYearId row="0" col="2" class="form-text-left-payment remove-white-space" [ngModel]='cardYear' (ngModelChange)='yearChanged($event)' hint="YY"  keyboardType="number"
 							autocorrect="false" ></TextField>
@@ -46,15 +46,12 @@
 					</StackLayout>
 				</GridLayout>
 			</StackLayout>
-
 			<Label class="h-line"></Label>
 			<StackLayout class="my-container">
 					<Label text="Billing Info" class="card-title"></Label>
 					<CheckBox  text="Same as personal information for {{ firstName }} {{ lastName }}" class="radio-button-payment"  ngDefaultControl></CheckBox>
 			</StackLayout>
-			
 			<Label class="h-line"></Label>
-
 			<Button text="Pay ${{payment}}.00" class="black-button" (tap)="submit($event)"></Button>		
 		</StackLayout>
 	</ScrollView>

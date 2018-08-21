@@ -32,8 +32,6 @@ export class StatusComponent implements OnInit {
 		this.StartService.refreshStatus(this.uuid).subscribe(
 			response => {
 				this.status = response['status'];
-				if (this.status)
-					console.log(this.status);
 				this.companyName = response['incorporation'][0].companyName;
 				this.companyType = response['incorporation'][0].companyType;
 				this.updatedAt = response['incorporation'][0].updatedAt;

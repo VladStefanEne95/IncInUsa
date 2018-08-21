@@ -17,10 +17,7 @@ export class DetailsComponent implements OnInit {
 	@ViewChild("CB1") FirstCheckBox: ElementRef;
 	@ViewChild("CB2") SecondCheckBox: ElementRef;
 
-	page;
-	//@ViewChild("step2") step2: ElementRef;
-    constructor(page: Page, private router: Router) {
-		// Use the component constructor to inject providers.
+    constructor(private page: Page, private router: Router) {
 		this.page = page;
 		page.actionBarHidden = true;
 		this.page.addCss("#CB1 {visibility: collapsed}");
@@ -28,7 +25,6 @@ export class DetailsComponent implements OnInit {
     }
 
     ngOnInit(): void {
-		// Init your component properties here.
 		this.companyName = appSettings.getString("companyName", "");
 		this.companyType = appSettings.getString("companyType", "");
 
@@ -51,7 +47,7 @@ export class DetailsComponent implements OnInit {
 		}
 		appSettings.setString("companyName", this.companyName);
 		appSettings.setString("companyType", this.companyType);
-		this.router.navigate(["/manage"]);
+		this.router.navigate(["/bank"]);
 	}
 
 	public buttonTapes() {

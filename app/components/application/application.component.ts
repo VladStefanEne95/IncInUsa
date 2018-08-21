@@ -46,8 +46,6 @@ export class ApplicationComponent implements OnInit {
 		this.uuid = this._Activatedroute.snapshot.params['id'];
 		this.directors = appSettings.getString("directors", "");
 		
-		if (this.directorsArr)
-			this.directorsArr = JSON.parse(this.directors);
 		
 		this.StartService.refreshStatus(this.uuid).subscribe(
 			response => {
@@ -62,14 +60,19 @@ export class ApplicationComponent implements OnInit {
 				this.postal = response['incorporation'][0].postal;
 				this.country = response['incorporation'][0].country;
 				this.state = response['incorporation'][0].state;
+				this.directors = response['incorporation'][0].directors;
+				this.directorsArr = JSON.parse(this.directors);
 			},
 			error => console.log(error)
 		);
 	}
 
 	step3() {
-
 		this.router.navigate(["/review"]);
+	}
+
+	viewDirector(id) {
+		this.router.navigate(["/view-director", this.uuid, id]);
 	}
 
 }

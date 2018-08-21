@@ -7,7 +7,7 @@ import { StartService } from './services/start/start.service';
 import { UploadService } from './services/upload/upload.service';
 import { HttpClientModule } from '@angular/common/http';
 import { NativeScriptHttpModule } from "nativescript-angular/http";
-
+import { TNSFontIconModule } from 'nativescript-ngx-fonticon';
 
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
@@ -23,7 +23,10 @@ registerElement("FilterableListpicker", () => require("nativescript-filterable-l
         AppComponent
     ],
     imports: [
-        NativeScriptModule,
+		NativeScriptModule,
+		TNSFontIconModule.forRoot({
+			'fa': './assets/font-awesome.css'
+		}),
 		AppRoutingModule,
 		HttpClientModule,
 		NativeScriptFormsModule,

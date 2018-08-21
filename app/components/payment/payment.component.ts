@@ -6,6 +6,7 @@ import { CreditCardView, Card, Stripe } from 'nativescript-stripe';
 import { EventData } from 'data/observable';
 import { PaymentService } from './../../services/payment/payment.service'
 import { IncorporationService } from './../../services/incorporation/incorporation.service'
+
 var appSettings = require("application-settings");
 
 
@@ -84,6 +85,7 @@ export class PaymentComponent implements OnInit {
 
 	cardNumberChanged(value) {
 		//console.log(value);
+		console.log(this.cardNr.nativeElement.android.getSelectionStart());
 		if ( value.length > 19 ) {
 			this.cardNumber = this.lastCardNumber
 			this.cardNr.nativeElement.text = this.lastCardNumber

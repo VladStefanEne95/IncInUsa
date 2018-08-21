@@ -33,7 +33,10 @@ export class ManageComponent implements OnInit {
 		this.companyName = appSettings.getString("companyName", "");
 		this.companyType = appSettings.getString("companyType", "");
 		this.uuidString = appSettings.getString("uuidString", "");
+		
 		this.uuidArr = this.uuidString.split(",");
+		// this.uuidArr =['006f0010-9239-46d1-a6bc-b4c7c5f5de82','a151487f-5fda-468f-a044-16bb6222c2a8','bfc8bac0-ffc9-448e-8bf4-d374c1fa68d5'];
+		// appSettings.setString("uuidString", ['006f0010-9239-46d1-a6bc-b4c7c5f5de82','a151487f-5fda-468f-a044-16bb6222c2a8','bfc8bac0-ffc9-448e-8bf4-d374c1fa68d5'].toString());
 		this.serverArr = [];
 
 		this.companyUuid = appSettings.getString("uuid", "");

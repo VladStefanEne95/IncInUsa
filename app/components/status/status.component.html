@@ -16,6 +16,7 @@
 					<Label  (tap)="viewApplication(uuid)" class="blue-text" row="0" col="1" text="View Application" ></Label>
 			</GridLayout>
 			<StackLayout *ngIf="status">
+				<Label text="test"></Label>
 			<GridLayout *ngIf="status.submited" rows="*" columns="*,*">
 				<StackLayout row="0" col="0">
 					<Label class="h2" text="{{companyName}} {{companyType}}" ></Label>

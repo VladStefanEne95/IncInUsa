@@ -68,8 +68,6 @@ export class PersonalComponent implements OnInit {
 		
 		if (this.country == "")
 			this.country = "Enter country"
-		if (this.state == "")
-			this.state = "Enter state"
 	}
 
 

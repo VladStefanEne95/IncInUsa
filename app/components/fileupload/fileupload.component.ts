@@ -9,8 +9,9 @@ import * as FileSystem from "file-system";
 import { Observable } from "rxjs";
 import {Page} from "ui/page";
 import { SelectedIndexChangedEventData } from "nativescript-drop-down";
-const imageSourceModule = require("tns-core-modules/image-source")
-import { UploadService } from './../../services/upload/upload.service'
+const imageSourceModule = require("tns-core-modules/image-source");
+import { UploadService } from './../../services/upload/upload.service';
+import * as dialogs from "ui/dialogs"
 
 var appSettings = require("application-settings");
 
@@ -40,7 +41,6 @@ export class FileuploadComponent implements OnInit {
 	}
 
     ngOnInit(): void {
-		// Init your component properties here.
 		this.page.addCss("#step2 {visibility: collapsed}");
 		this.items.push("Second");
 		this.items.push("Passaport");

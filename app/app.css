@@ -282,3 +282,7 @@ components that have the btn class name.
 .h2 {
 	margin-top: 20;
 }
+
+.fa {
+	font-family: FontAwesome, fontawesome-webfont;
+  }

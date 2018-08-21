@@ -61,6 +61,8 @@
 						<Label class="form-label" row="0" col="0" text="State" ></Label>
 						<TextField *ngIf="country!='United States'" class="form-text" row="0" col="1" [(ngModel)]="state" hint="Enter state" 
 						autocorrect="false" ></TextField>
+						<Label *ngIf="country=='United States' && state==''" (tap)="showPickerStates()" class="form-text" row="0" col="1" text="Enter state" 
+						autocorrect="false" ></Label>
 						<Label *ngIf="country=='United States'" (tap)="showPickerStates()" class="form-text" row="0" col="1" text="{{state}}" 
 						autocorrect="false" ></Label>
 				</GridLayout>
