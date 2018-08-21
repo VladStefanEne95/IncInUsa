@@ -1,0 +1,38 @@
+
+
+<ScrollView>
+	<StackLayout orientation="vertical">
+		<StackLayout>
+			<StackLayout>
+				<GridLayout rows="*" columns="50,*, 50" class="topmenu-grid">
+					<Label class="topmenu-back" row="0" col="0" text="<" ></Label>
+					<StackLayout row="0" col="1">
+						<Label class="topmenu-step" text="STEP 1/5" ></Label>
+						<Label class="topmenu-title" text="Company details" ></Label>
+					</StackLayout>
+					<Label class="topmenu-logo" row="0" col="2" text="LOGO" ></Label>
+				</GridLayout>
+			</StackLayout>
+
+			<Label style="margin-top:25" class="details-title capitalize" textWrap="true" text="Continue with or without creating a bank account"></Label>
+			<GridLayout  rows="*,*" columns="60,*">
+				<CheckBox #CB1 id="CB1" text="" row="0" col="0" class="radio-button" boxType="circle" ngDefaultControl></CheckBox>
+				<StackLayout class="right-description" row="0" col="1">
+					<Label (tap)="firstCheckboxTap()" class="top-right-description" text="With bank account"></Label>
+					<Label (tap)="firstCheckboxTap()" class="bottom-right-description" text="Add description for card"  textWrap="true"></Label>
+				</StackLayout>
+
+				<CheckBox #CB2 id="CB2" text="" row="1" col="0" boxType="circle" class="radio-button" ngDefaultControl></CheckBox>
+				<StackLayout class="right-description" row="1" col="1">
+						<Label (tap)="secondCheckboxTap()" class="top-right-description" text="Without bank account"></Label>
+						<Label (tap)="secondCheckboxTap()" class="bottom-right-description" text="Add description for card"  textWrap="true"></Label>
+				</StackLayout>
+			</GridLayout>
+
+			<Label text="How do I know which one to choose?" class="blue-text" (tap)="buttonTapes()"></Label>
+
+			<Button text="NEXT" class="green-button" (tap)="nextStep()" ></Button>
+		</StackLayout>
+	</StackLayout>
+
+</ScrollView>

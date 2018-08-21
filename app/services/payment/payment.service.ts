@@ -10,11 +10,11 @@ export class PaymentService {
   
   constructor(private http: HttpClient, private router: Router) { }
   
-  submitToken(token: string) {
+  submitToken(token: string, payment: number) {
 	console.log(token);
 	let headears = new HttpHeaders();
 	headears.append('Content-Type', 'application/json');
-	return this.http.post(this.submitUrl, {stripeToken: token}); 	
+	return this.http.post(this.submitUrl, {stripeToken: token, sum: payment}); 	
   }
 
 }

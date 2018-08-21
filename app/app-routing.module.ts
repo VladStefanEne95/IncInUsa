@@ -3,7 +3,7 @@ import { Routes } from "@angular/router";
 import { NativeScriptRouterModule } from "nativescript-angular/router";
 
 const routes: Routes = [
-    { path: "", redirectTo: "/home", pathMatch: "full" },
+    { path: "", redirectTo: "/personal", pathMatch: "full" },
 	{ path: "home", loadChildren: "./components/home/home.module#HomeModule" },
 	{ path: "finish", loadChildren: "./components/finish/finish.module#FinishModule" },
 	{ path: "review", loadChildren: "./components/review/review.module#ReviewModule" },
@@ -11,6 +11,7 @@ const routes: Routes = [
 	{ path: "newdirector", loadChildren: "./components/newdirector/newdirector.module#NewDirectorModule" },
 	{ path: "personal", loadChildren: "./components/personal/personal.module#PersonalModule" },
 	{ path: "details", loadChildren: "./components/details/details.module#DetailsModule" },
+	{ path: "bank", loadChildren: "./components/bank/bank.module#BankModule" },
 	{ path: "payment", loadChildren: "./components/payment/payment.module#PaymentModule" },
 	{ path: "manage", loadChildren: "./components/manage/manage.module#ManageModule" },
 	{ path: "status/:id", loadChildren: "./components/status/status.module#StatusModule" },

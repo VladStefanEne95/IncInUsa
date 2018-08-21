@@ -25,6 +25,8 @@ export class ReviewComponent implements OnInit {
 	companyType :string;
 	directors :string;
 	directorsArr :Array<any>;
+	bankAccount :string;
+	payment :number;
 
 	//@ViewChild("step2") step2: ElementRef;
     constructor(private page: Page, private router: Router) {
@@ -51,9 +53,13 @@ export class ReviewComponent implements OnInit {
 		this.city = appSettings.getString("city", "");
 		this.postal = appSettings.getString("postal", 0);
 		this.country = appSettings.getString("country", "");
+		this.bankAccount = appSettings.getString("bankAccount", "");
 		this.state = appSettings.getString("state", "");
 		this.directors = appSettings.getString("directors", "");
-		this.directorsArr = JSON.parse(this.directors);
+		if (this.directors)
+			this.directorsArr = JSON.parse(this.directors);
+		console.log(appSettings.getString("payment", 0));
+		this.payment = parseInt(appSettings.getString("payment", 0)) + 595;
 	}
 
 	next() {

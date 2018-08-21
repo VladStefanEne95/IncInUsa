@@ -15,6 +15,9 @@ import { AppComponent } from "./app.component";
 import {registerElement} from "nativescript-angular/element-registry";
 registerElement("FilterableListpicker", () => require("nativescript-filterable-listpicker").FilterableListpicker);
 
+
+
+
 @NgModule({
     bootstrap: [
         AppComponent

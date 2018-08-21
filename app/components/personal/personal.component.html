@@ -1,6 +1,3 @@
-<ActionBar class="action-bar">
-    <Label class="action-bar-title" text=""></Label>
-</ActionBar>
 
 <ScrollView>
 	<StackLayout orientation="vertical">
@@ -56,8 +53,8 @@
 
 			<GridLayout rows="*" columns="*,*" class="grid-form">
 					<Label class="form-label" row="0" col="0" text="Country" ></Label>
-					<TextField class="form-text" row="0" col="1" [(ngModel)]="country" hint="Enter country" 
-					autocorrect="false" ></TextField>
+					<Label class="form-text" textWrap="true" (tap)="showPicker()" row="0" col="1" text="{{emoji}} {{country}}"  
+					autocorrect="false" ></Label>
 			</GridLayout>
 
 			<GridLayout rows="*" columns="*,*" class="grid-form">
@@ -70,15 +67,8 @@
 			<CheckBox #CB1 id="CB1" text="Add me to the List of Directors of {{companyName}} {{companyType}}" row="0" col="0" class="radio-button"  ngDefaultControl></CheckBox>
 			<Label class="label-text" textWrap="true" text="You will be able to add more directors later."></Label>
 			<Button text="NEXT" class="green-button" (tap)="step3()"  ></Button>
-
-			<StackLayout>
-				<Label text="Whats your favorite programming language?"></Label>
-				<Button text="Choose a Language" (tap)="showPicker()"></Button>
-			</StackLayout>
-			<FilterableListpicker #myfilter blur="dark" hintText="Type to filter..." [source]="listitems" (canceled)="cancelFilterableList($event)" (itemTapped)="itemTapped($event)"></FilterableListpicker>
-
-
 		</StackLayout>
 	</StackLayout>
-
 </ScrollView>
+		<FilterableListpicker #myfilter blur="dark" hintText="FIlter" [source]="countryList" (canceled)="cancelFilterableList($event)" (itemTapped)="itemTapped($event)"></FilterableListpicker>
+

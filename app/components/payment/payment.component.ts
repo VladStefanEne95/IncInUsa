@@ -41,6 +41,7 @@ export class PaymentComponent implements OnInit {
 	companyType :string;
 	directors :string;
 	uuid :string;
+	payment :number;
 
 	lastCardNumber :string;
 
@@ -74,7 +75,9 @@ export class PaymentComponent implements OnInit {
 		this.country = appSettings.getString("country", "");
 		this.state = appSettings.getString("state", "");
 		this.directors = appSettings.getString("directors", "");
+		this.payment = parseInt(appSettings.getString("payment", 0)) + 595;
 		this.page.addCss("#minicard {visibility: collapsed}");
+		
 		this.oldValueLength = 0;
 		this.lastCardNumber = "";
 	}
@@ -194,7 +197,7 @@ export class PaymentComponent implements OnInit {
 			// if (!error) {
 			// 	console.log(token.getId());
 			// 	console.log(token.getCard());
-			// 	this.PaymentService.submitToken(token.getId()).subscribe(
+			// 	this.PaymentService.submitToken(token.getId(), this.payment).subscribe(
 			// 	response => alert("Payment done"),
 			// 	error => (alert("there was an error, please try again")))	
 

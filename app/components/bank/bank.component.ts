@@ -5,22 +5,19 @@ var appSettings = require("application-settings");
 
 
 @Component({
-    selector: "Details",
+    selector: "Bank",
     moduleId: module.id,
-    templateUrl: "./details.component.html"
+    templateUrl: "./bank.component.html"
 })
-export class DetailsComponent implements OnInit {
+export class BankComponent implements OnInit {
 	
-	companyName :string;
-	companyType :string;
+	bankAccount :boolean;
+	payment :number;
 
 	@ViewChild("CB1") FirstCheckBox: ElementRef;
 	@ViewChild("CB2") SecondCheckBox: ElementRef;
 
-	page;
-	//@ViewChild("step2") step2: ElementRef;
-    constructor(page: Page, private router: Router) {
-		// Use the component constructor to inject providers.
+    constructor(private page: Page, private router: Router) {
 		this.page = page;
 		page.actionBarHidden = true;
 		this.page.addCss("#CB1 {visibility: collapsed}");
@@ -28,39 +25,34 @@ export class DetailsComponent implements OnInit {
     }
 
     ngOnInit(): void {
-		// Init your component properties here.
-		this.companyName = appSettings.getString("companyName", "");
-		this.companyType = appSettings.getString("companyType", "");
-
-		if(this.companyType == "LLC") {
+		console.log(appSettings.getString("bankAccount", ""));
+		this.bankAccount = (appSettings.getString("bankAccount", "") == 'true');
+		if (this.bankAccount == true) {
 			this.FirstCheckBox.nativeElement.checked = true;
 			this.page.addCss("#CB1 {visibility: visible}");
+			this.payment = 100;
 		}
 		
-		if(this.companyType == "Inc") {
+		if (this.bankAccount == false) {
 			this.SecondCheckBox.nativeElement.checked = true;
 			this.page.addCss("#CB2 {visibility: visible}");
+			this.payment = 0;
 		}
+
 	}
 
 
-	public step3() {
-		if(this.companyName == "" || this.companyType == "") {
-			alert("please complete the form before proceeding");
-			return;
-		}
-		appSettings.setString("companyName", this.companyName);
-		appSettings.setString("companyType", this.companyType);
-		this.router.navigate(["/manage"]);
+	public nextStep() {
+		appSettings.setString("payment", this.payment.toString());
+		appSettings.setString("bankAccount", this.bankAccount.toString());
+		this.router.navigate(["/personal"]);
 	}
 
-	public buttonTapes() {
-		alert("some text");
-	}
 	public firstCheckboxTap() {
 		this.FirstCheckBox.nativeElement.checked = true;
 		this.SecondCheckBox.nativeElement.checked = false;
-		this.companyType = "LLC"; 
+		this.bankAccount = true; 
+		this.payment = 100;
 		this.page.addCss("#CB1 {visibility: visible}");
 		this.page.addCss("#CB2 {visibility: collapsed}");
 	}
@@ -68,7 +60,8 @@ export class DetailsComponent implements OnInit {
 	public secondCheckboxTap() {
 		this.FirstCheckBox.nativeElement.checked = false;
 		this.SecondCheckBox.nativeElement.checked = true;
-		this.companyType = "Inc";
+		this.bankAccount = false;
+		this.payment = 0;
 		this.page.addCss("#CB2 {visibility: visible}");
 		this.page.addCss("#CB1 {visibility: collapsed}");
 	}

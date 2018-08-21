@@ -21,6 +21,11 @@
 							<Label class="form-label" row="0" col="0" text="Company Type" ></Label>
 							<Label class="form-text h3" row="0" col="1" [text]="companyType"></Label>
 						</GridLayout>
+						<GridLayout rows="*" columns="*,*" class="grid-form">
+								<Label class="form-label" row="0" col="0" text="Bank Account" ></Label>
+								<Label *ngIf="bankAccount" class="form-text h3" row="0" col="1" text="Create bank account"></Label>
+								<Label *ngIf="!bankAccount" class="form-text h3" row="0" col="1" text="Do not create a bank account"></Label>
+						</GridLayout>
 
 					<Label text="List of Directors" class="h2" style="margin-left:20; margin-top:50"></Label>
 					<GridLayout *ngFor="let dir of directorsArr; let i = index" rows="*" columns="*,*" class="grid-form">
@@ -75,7 +80,7 @@
 			
 			</StackLayout>
 			<Label text="AMOUNT DUE" class="details-title"></Label>
-			<Label text="$595.00" style="color: #25B12A;margin-left:20; font-size:18"></Label>
+			<Label text="${{payment}}.00" style="color: #25B12A;margin-left:20; font-size:18"></Label>
 			<Button text="Continue to Payment" style="margin-top:40" class="blue-button" (tap)="next()"  ></Button>
 		</StackLayout>
 	</ScrollView>
