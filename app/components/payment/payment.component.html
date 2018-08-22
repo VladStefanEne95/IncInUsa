@@ -18,16 +18,6 @@
 					<TextField #cardNr class="form-text-left-payment" [ngModel]='cardNumber' (ngModelChange)='cardNumberChanged($event)' hint="Card number"  keyboardType="number"
 					autocorrect="false" ></TextField>
 				</StackLayout>
-				<GridLayout id="minicard" rows="*" columns="70,50,50,50" class="card-number">
-						<TextField class="card-quarter-number" #card1 style="margin-left:20" row="0" col="0" [ngModel]='cn1' (ngModelChange)='cn1Changed($event)'  keyboardType="number"
-						autocorrect="false" ></TextField>
-						<TextField class="card-quarter-number" row="0" col="1"  [ngModel]='cn2' (ngModelChange)='cn2Changed($event)'  keyboardType="number"
-						autocorrect="false" ></TextField>
-						<TextField class="card-quarter-number" row="0" col="2" [ngModel]='cn3' (ngModelChange)='cn3Changed($event)'  keyboardType="number"
-						autocorrect="false" ></TextField>
-						<TextField class="card-quarter-number" row="0" col="3" [ngModel]='cn4' (ngModelChange)='cn4Changed($event)'  keyboardType="number"
-						autocorrect="false" ></TextField>
-				</GridLayout>
 				<StackLayout class="card-number">
 						<TextField #owner class="form-text-left-payment" [(ngModel)]="cardholder" hint="Cardholder’s Name"
 						autocorrect="false" ></TextField>

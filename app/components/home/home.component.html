@@ -5,32 +5,32 @@
 <ScrollView>
 	<StackLayout orientation="vertical">
 		<StackLayout  *ngIf="viewType == 1" id="homepage1">
-			<StackLayout style="height:50; background-color:#8C12D2;"></StackLayout>
+			<StackLayout style="height:50; background-color:#A600EE;"></StackLayout>
 			<StackLayout class="main-page-gradient">
 					<StackLayout class="container">
-						<Image style="font-weight:300;" class="main-image" src="https://play.nativescript.org/dist/assets/img/NativeScript_logo.png"></Image>
-						<Label textWrap="true" text="Incorporate your US company in under"></Label>
+						<Image class="main-image" src="~/images/main-image.png"></Image>
+						<Label style="font-weight:300;" textWrap="true" text="Incorporate your US company in under"></Label>
 						<Label style="font-weight:700; margin-bottom:20;" text="5 minutes"></Label>
 						<Label style="font-size:14; font-weight:600;" class="capitalize" text="starting from $595.00"></Label>
 					</StackLayout>
 			</StackLayout>
 			
-			<Label style="width:300;margin-top:50; text-align:center;" textWrap="true" text="Have your passport or national ID ready before starting the process."></Label>
+			<Label style="width:300;margin-top:50; text-align:center;color:black;" textWrap="true" text="Have your passport or national ID ready before starting the process."></Label>
 			<Button style="margin-top:10;" text="start new incorporation" class="green-button capitalize" (tap)="start()"  ></Button>
 			<Label style="text-align:center;color:#0675e1;margin-top:20; margin-bottom:30;font-size:18;" (tap)="oldInc()" text="I already have an application number."></Label>
 		</StackLayout>
 
 		<StackLayout id="homepage2" *ngIf="viewType == 2" >
-				<StackLayout style="height:50; background-color:#DE0017;"></StackLayout>
+				<StackLayout style="height:50; background-color:#EE1900"></StackLayout>
 				<StackLayout class="second-page-gradient">
 						<StackLayout class="container">
-							<Image style="font-weight:300;" class="main-image" src="https://play.nativescript.org/dist/assets/img/NativeScript_logo.png"></Image>
+							<Image style="font-weight:300;" class="main-image" src="~/images/main-image.png"></Image>
 							<Label textWrap="true" text="Incorporate your US company in under"></Label>
 							<Label style="font-weight:700; margin-bottom:20;" text="5 minutes"></Label>
 							<Label style="font-size:14; font-weight:600;" class="capitalize" text="starting from $595.00"></Label>
 						</StackLayout>
 				</StackLayout>
-				<Label style="width:300;margin-top:50; text-align:center;" textWrap="true" text="Have your passport or national ID ready before starting the process."></Label>
+				<Label style="width:300;margin-top:50; text-align:center; color:black;" textWrap="true" text="Have your passport or national ID ready before starting the process."></Label>
 				<Button style="margin-top:10;" text="Continue existing application" class="orange-button" (tap)="continue()"  ></Button>
 				<Label style="width:300; text-align:center;" textWrap="true" text="OR"></Label>
 				<Button style="margin-top:10;" text="Start over" class="blue-button" (tap)="start()"  ></Button>

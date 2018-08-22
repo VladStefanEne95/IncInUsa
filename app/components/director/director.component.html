@@ -7,7 +7,7 @@
 					<Label style="text-align:left; font-size:22;" row="0" col="1" text="Back" ></Label>
 				</GridLayout>
 			</StackLayout>
-			<Label text="Edit Director" class="h2" style="margin-left:20;"></Label>	
+			<Label text="Edit Director" class="h2" style="margin-left:20;font-weight:500;"></Label>	
 			<StackLayout>
 				<GridLayout rows="*" columns="*,*" class="grid-form">
 					<Label class="form-label" row="0" col="0" text="First Name" ></Label>
@@ -49,17 +49,23 @@
 	
 				<GridLayout rows="*" columns="*,*" class="grid-form">
 						<Label class="form-label" row="0" col="0" text="Country" ></Label>
-						<TextField class="form-text" row="0" col="1" [(ngModel)]="country" hint="Enter country" 
-						autocorrect="false" ></TextField>
+						<Label class="form-text" textWrap="true" (tap)="showPicker()" row="0" col="1" text="{{emoji}} {{country}}"  
+						autocorrect="false" ></Label>
 				</GridLayout>
 	
 				<GridLayout rows="*" columns="*,*" class="grid-form">
 						<Label class="form-label" row="0" col="0" text="State" ></Label>
-						<TextField class="form-text" row="0" col="1" [(ngModel)]="state" hint="Enter state" 
+						<TextField *ngIf="country!='United States'" class="form-text" row="0" col="1" [(ngModel)]="state" hint="Enter state" 
 						autocorrect="false" ></TextField>
+						<Label *ngIf="country=='United States' && state==''" (tap)="showPickerStates()" class="form-text" row="0" col="1" text="Enter state" 
+						autocorrect="false" ></Label>
+						<Label *ngIf="country=='United States'" (tap)="showPickerStates()" class="form-text" row="0" col="1" text="{{state}}" 
+						autocorrect="false" ></Label>
 				</GridLayout>
+				
 			
 			</StackLayout>
 			<Button text="Done" style="margin-top:40" class="green-button" (tap)="done()"  ></Button>
 		</StackLayout>
 	</ScrollView>
+	<FilterableListpicker #myfilter blur="dark" hintText="FIlter" [source]="countryList" (canceled)="cancelFilterableList($event)" (itemTapped)="itemTapped($event)"></FilterableListpicker>

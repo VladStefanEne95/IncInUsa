@@ -4,15 +4,16 @@
 
 <ScrollView>
 	<StackLayout orientation="vertical">
-		<StackLayout>
-			<GridLayout rows="*" columns="50,*, 50" class="topmenu-grid main-page-gradient">
-				<Label class="topmenu-back" row="0" col="0" text="lo" ></Label>
-				<StackLayout row="0" col="1">
-					<Label class="topmenu-title-2" text="Manage Companies" ></Label>
+			<StackLayout>
+					<GridLayout rows="*" columns="50,*, 120" class="topmenu-grid topbar-gradient">
+						<Label class="topmenu-back" row="0" col="0" text="<" ></Label>
+						<StackLayout row="0" col="1">
+							<Label class="topmenu-step" text="Manage Company" ></Label>
+							<Label class="topmenu-title" text="Application details" ></Label>
+						</StackLayout>
+						<Image class="topmenu-logo" row="0" col="2" src="~/images/main-image.png"></Image>
+					</GridLayout>
 				</StackLayout>
-				<Label class="topmenu-logo" row="0" col="2" text="LOGO" ></Label>
-			</GridLayout>
-		</StackLayout>
 			<StackLayout>
 				<Label text="Company details" class="h2" style="margin-left:20;"></Label>
 				<GridLayout rows="*" columns="*,*" class="grid-form">
@@ -25,12 +26,13 @@
 					</GridLayout>
 
 				<Label text="List of Directors" class="h2" style="margin-left:20; margin-top:50"></Label>
-				<GridLayout *ngFor="let dir of directorsArr; let i = index" rows="*" columns="*,*" class="grid-form">
-						<Label class="form-label" row="0" col="0" text="{{ dir.firstName }} {{ dir.lastName }}" ></Label>
-						<Label class="form-text h3" style="color:#0675e1; margin-right:30" (tap)="viewDirector(i)" row="0" col="1" text="VIEW DETAILS"></Label>
+				<GridLayout *ngFor="let dir of directorsArr; let i = index" rows="*" columns="50,*,*" class="grid-form">
+						<Image class="form-label" row="0" col="0" src="~/images/avatar.png"></Image>
+						<Label class="form-label-small" row="0" col="1" text="{{ dir.firstName }} {{ dir.lastName }}" ></Label>
+						<Label class="form-text h3" style="color:#0675e1; margin-right:30" (tap)="viewDirector(i)" row="0" col="2" text="VIEW DETAILS"></Label>
 				</GridLayout>
 
-			<Label text="Personal Information" class="h2" style="margin-left:20;"></Label>
+			<Label text="Registrar information" class="h2" style="margin-left:20;margin-top:40;"></Label>
 				<GridLayout rows="*" columns="*,*" class="grid-form">
 						<Label class="form-label" row="0" col="0" text="First Name" ></Label>
 						<Label class="form-text h3" row="0" col="1" [text]="firstName"></Label>

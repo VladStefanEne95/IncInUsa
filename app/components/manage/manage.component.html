@@ -2,12 +2,12 @@
 <ScrollView>
 	<StackLayout orientation="vertical">
 		<StackLayout>
-			<GridLayout rows="*" columns="50,*, 50" class="topmenu-grid main-page-gradient">
-				<Label class="topmenu-back" row="0" col="0" text="lo" ></Label>
-				<StackLayout row="0" col="1">
+			<GridLayout rows="*" columns="50,*, 100" class="topmenu-grid topbar-gradient">
+				<Image class="topmenu-back-2" row="0" col="0" src="~/images/business.png"></Image>
+				<StackLayout style="vertical-align:center;" row="0" col="1">
 					<Label class="topmenu-title-2" text="Manage Companies" ></Label>
 				</StackLayout>
-				<Label class="topmenu-logo" row="0" col="2" text="LOGO" ></Label>
+				<Image class="topmenu-logo" row="0" col="2" src="~/images/main-image.png"></Image>
 			</GridLayout>
 		</StackLayout>
 		<StackLayout *ngFor="let serverArrElem of serverArr">
@@ -17,7 +17,12 @@
 						<Label text="{{serverArrElem.companyName}} {{serverArrElem.companyType}}" class="left-manage-title"></Label>
 						<Label textWrap="true" text="{{ serverArrElem.status}}" class="left-manage-status"></Label>
 					</StackLayout>
-					<Label row ="0" col="1" class="small-gray" textWrap='true' style="vertical-align:center; text-align:right;" text="Last updated {{ serverArrElem.updatedAt | date: 'yyyy/MM/dd h:mm:ss a' | statusUpdate }} >"></Label>
+					<StackLayout row="0" col="1" >
+						<GridLayout  rows="*" columns="*, 20" >
+								<Label row="0" col="0" class="small-gray" textWrap='true' style="vertical-align:center; text-align:right;" text="Last updated {{ serverArrElem.updatedAt | date: 'yyyy/MM/dd h:mm:ss a' | statusUpdate }}"></Label>
+								<Label row="0" col="1" class="small-gray" textWrap='true' style="vertical-align:center; text-align:right;" text=">"></Label>
+						</GridLayout>
+					</StackLayout>
 				</GridLayout>
 				<Label class="small-gray" text="We are reviewing your application and will contact you in 3-5 business days." textWrap="true" ></Label> 
 			</StackLayout>

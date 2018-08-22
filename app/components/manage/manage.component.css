@@ -2,11 +2,12 @@
 	margin-left: 20;
 	margin-right: 20;
 	padding-bottom: 30;
+	margin-top:10;
 	border-bottom-width: 1;
 	border-bottom-color: gray;
 }
 .small-gray {
-	color: gray;
+	color: #8F8E94;
 	font-weight: 400;
 	font-size: 16;
 }
@@ -20,4 +21,8 @@
 	color: black;
 	font-weight: 400;
 	font-size: 16;
+}
+
+.topmenu-grid {
+	margin-bottom: 5;
 }

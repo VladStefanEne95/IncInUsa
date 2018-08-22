@@ -3,6 +3,7 @@
 	text-align: right;
 	background-color: white;
 	margin-top: 20;
+	margin-right: 0;
 	font-size: 16;
 }
 
@@ -12,7 +13,10 @@
 
 .right-gray-small-text {
 	margin-top: 20;
-	color: gray;
+	color: #8E8E8E;
 	font-size: 14;
 	text-align: right;
+}
+.gray-text {
+	color: #8E8E8E;
 }

@@ -93,6 +93,7 @@ export class PersonalComponent implements OnInit {
 		appSettings.setString("city", this.city);
 		appSettings.setString ("postal", this.postal);
 		appSettings.setString("country", this.country);
+		appSettings.setString("emoji", this.emoji);
 		appSettings.setString("state", this.state);
 		appSettings.setString("addToDirectors", String(this.FirstCheckBox.nativeElement.checked));
 

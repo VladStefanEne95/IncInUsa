@@ -43,6 +43,7 @@ export class PaymentComponent implements OnInit {
 	directors :string;
 	uuid :string;
 	payment :number;
+	lastPosition :number;
 
 	lastCardNumber :string;
 
@@ -81,11 +82,19 @@ export class PaymentComponent implements OnInit {
 		
 		this.oldValueLength = 0;
 		this.lastCardNumber = "";
+		this.lastPosition = 0;
 	}
 
 	cardNumberChanged(value) {
 		//console.log(value);
-		console.log(this.cardNr.nativeElement.android.getSelectionStart());
+		//console.log(this.cardNr.nativeElement.android.getSelectionStart());
+		//console.log(this.lastPosition - this.cardNr.nativeElement.android.getSelectionStart());
+		//console.log(this.lastPosition, this.cardNr.nativeElement.android.getSelectionStart());
+		let change = 0;
+		console.log(this.lastPosition, this.cardNr.nativeElement.android.getSelectionStart());
+		if (this.lastPosition > this.cardNr.nativeElement.android.getSelectionStart()) {
+			change = 1;
+		}
 		if ( value.length > 19 ) {
 			this.cardNumber = this.lastCardNumber
 			this.cardNr.nativeElement.text = this.lastCardNumber
@@ -116,10 +125,14 @@ export class PaymentComponent implements OnInit {
 			this.cardNumber = withSpace;
 			let cursorPosition = this.cardNr.nativeElement.text.length;
 			value = withSpace;
-			
+
 			this.cardNr.nativeElement.selectionStart = cursorPosition;
 			this.cardNr.nativeElement.selectionEnd = cursorPosition;
-			this.cardNr.nativeElement.android.setSelection(cursorPosition);
+			this.cardNr.nativeElement.android.setSelection(cursorPosition);	
+
+	
+			this.lastPosition = this.cardNr.nativeElement.android.getSelectionStart();
+
 
 			//Use native api's for cursor position
 			// doesn't work when there is the same number multiple times

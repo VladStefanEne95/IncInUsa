@@ -1,16 +1,16 @@
 
 <ScrollView>
 		<StackLayout orientation="vertical">
-			<StackLayout>
-				<GridLayout rows="*" columns="50,*, 50" class="topmenu-grid">
-					<Label class="topmenu-back" row="0" col="0" text="<" ></Label>
-					<StackLayout row="0" col="1">
-						<Label class="topmenu-step" text="STEP 4/5" ></Label>
-						<Label class="topmenu-title" text="Review order" ></Label>
-					</StackLayout>
-					<Label class="topmenu-logo" row="0" col="2" text="LOGO" ></Label>
-				</GridLayout>
-			</StackLayout>	
+				<StackLayout>
+						<GridLayout rows="*" columns="50,*, 120" class="topmenu-grid">
+							<Label class="topmenu-back" row="0" col="0" text="<" ></Label>
+							<StackLayout row="0" col="1">
+								<Label class="topmenu-step" text="STEP 5/6" ></Label>
+								<Label class="topmenu-title" text="Review order" ></Label>
+							</StackLayout>
+							<Image class="topmenu-logo" row="0" col="2" src="~/images/main-image.png"></Image>
+						</GridLayout>
+					</StackLayout>	
 			<StackLayout>
 					<Label text="Company details" class="h2" style="margin-left:20;"></Label>
 					<GridLayout rows="*" columns="*,*" class="grid-form">
@@ -28,9 +28,11 @@
 						</GridLayout>
 
 					<Label text="List of Directors" class="h2" style="margin-left:20; margin-top:50"></Label>
-					<GridLayout *ngFor="let dir of directorsArr; let i = index" rows="*" columns="*,*" class="grid-form">
-							<Label class="form-label" row="0" col="0" text="{{ dir.firstName }} {{ dir.lastName }}" ></Label>
-							<Label class="form-text h3" style="color:#0675e1; margin-right:30" (tap)="editDirector(i)" row="0" col="1" text="EDIT"></Label>
+					<GridLayout *ngFor="let dir of directorsArr; let i = index" rows="*" columns="50,*,15,auto" class="grid-form">
+							<Image class="form-label" row="0" col="0" src="~/images/avatar.png"></Image>
+							<Label class="form-label" style="margin-left:5; vertical-align:center;" row="0" col="1" text="{{ dir.firstName }} {{ dir.lastName }}" ></Label>
+							<Image style="vertical-align:center" row="0" col="2" src="~/images/edit.png"></Image>
+							<Label class="form-text h3" style="color:#0675e1; margin-right:30;margin-left:5; vertical-align:center;" (tap)="editDirector(i)" row="0" col="3" text="EDIT"></Label>
 					</GridLayout>
 					<Button text="Add a Director" style="margin-top:30" class="blue-button"  (tap)="addDirector()"  ></Button>
 
