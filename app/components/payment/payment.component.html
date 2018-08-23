@@ -2,37 +2,52 @@
 <ScrollView>
 		<StackLayout orientation="vertical">
 			<StackLayout>
-				<GridLayout rows="*" columns="50,*, 50" class="topmenu-grid">
-					<Label class="topmenu-back" row="0" col="0" text="<" ></Label>
-					<StackLayout row="0" col="1">
-						<Label class="topmenu-step" text="STEP 5/5" ></Label>
-						<Label class="topmenu-title" text="Payment" ></Label>
-					</StackLayout>
-					<Label class="topmenu-logo" row="0" col="2" text="LOGO" ></Label>
-				</GridLayout>
-			</StackLayout>
+					<GridLayout rows="*" columns="50,*, 120" class="topmenu-grid">
+						<Label class="topmenu-back" row="0" col="0" text="<" ></Label>
+						<StackLayout row="0" col="1">
+							<Label class="topmenu-step" text="STEP 6/6" ></Label>
+							<Label class="topmenu-title" text="Payment" ></Label>
+						</StackLayout>
+						<Image class="topmenu-logo" row="0" col="2" src="~/images/main-image.png"></Image>
+					</GridLayout>
+				</StackLayout>
+
 			<StackLayout class="my-container">
-				<Label text="128-bit ssl encryption" class="capitalize green-text"></Label>
+				<GridLayout rows="*" columns="16, *">
+					<Image src="~/images/https-green.png" row="0" col="0"></Image>
+					<Label text="128-bit ssl encryption" row="0" col="1" class="capitalize green-text"></Label>
+				</GridLayout>
 				<Label text="Credit Card Details" class="card-title"></Label>
 				<StackLayout id="fullcard" class="card-number">
-					<TextField #cardNr class="form-text-left-payment" [ngModel]='cardNumber' (ngModelChange)='cardNumberChanged($event)' hint="Card number"  keyboardType="number"
-					autocorrect="false" ></TextField>
+						<GridLayout rows="*" columns="*, 34" >
+							<TextField #cardNr row="0" col="0" class="form-text-left-payment" [ngModel]='cardNumber' (ngModelChange)='cardNumberChanged($event)' hint="Card number"  keyboardType="number"
+							autocorrect="false" ></TextField>
+							<Image class="card-icon" row="0" col="1" src="~/images/payment.png"></Image>
+						</GridLayout>
 				</StackLayout>
 				<StackLayout class="card-number">
-						<TextField #owner class="form-text-left-payment" [(ngModel)]="cardholder" hint="Cardholder’s Name"
-						autocorrect="false" ></TextField>
+						<GridLayout rows="*" columns="*, 34" >
+							<TextField #owner class="form-text-left-payment" [(ngModel)]="cardholder" hint="Cardholder’s Name"
+							autocorrect="false" ></TextField>
+							<Image class="card-icon" row="0" col="1" src="~/images/account.png"></Image>
+						</GridLayout>
 				</StackLayout>
-				<GridLayout r0w="0" col="0" rows="*" columns="*, 20,*"  >
-					<GridLayout rows="*" columns="auto,auto,auto" class="card-number">
+				<GridLayout rows="*" columns="*, 20,*"  >
+					<GridLayout rows="*" columns="auto,auto,auto,*,34" class="card-number">
 							<TextField #cardMonthId row="0" col="0" class="form-text-left-payment remove-white-space exp-month"   [ngModel]='cardMonth' (ngModelChange)='dateChanged($event)'   hint="MM"  keyboardType="number"
 							autocorrect="false" ></TextField> 
 							<Label row="0" col="1" text="/" style="vertical-align:middle;"></Label>
 							<TextField #cardYearId row="0" col="2" class="form-text-left-payment remove-white-space" [ngModel]='cardYear' (ngModelChange)='yearChanged($event)' hint="YY"  keyboardType="number"
 							autocorrect="false" ></TextField>
+							<Label row="0" col="3" text=""></Label>
+							<Image class="card-icon" row="0" col="4" src="~/images/event.png"></Image>
 					</GridLayout>
 					<StackLayout row="0" col="2" class="card-number">
-						<TextField #cvc class="form-text-left-payment" [(ngModel)]="cardCvc" hint="CVC"  keyboardType="number"
-						autocorrect="false" ></TextField>
+						<GridLayout rows="*" columns="*,34">
+							<TextField #cvc row="0" col="0" class="form-text-left-payment" [(ngModel)]="cardCvc" hint="CVC"  keyboardType="number"
+							autocorrect="false" ></TextField>
+							<Image class="card-icon" row="0" col="1" src="~/images/https.png"></Image>
+						</GridLayout>
 					</StackLayout>
 				</GridLayout>
 			</StackLayout>

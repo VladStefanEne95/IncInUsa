@@ -3,7 +3,7 @@
 	margin-right: 30;
 }
 .green-text {
-	color: #25B12A;
+	color: #0DB700;
 	font-weight: 800;
 }
 
@@ -59,4 +59,11 @@
 
 .radio-button-payment {
 	margin-left: 0;
+}
+
+.card-icon {
+	margin-top: 5;
+	margin-bottom: 5;
+	margin-right: 10;
+	text-align: right;
 }
