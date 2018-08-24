@@ -20,7 +20,7 @@ export class UploadService {
 }
 
 
-  public uploadImage(filepath) {
+  public uploadImage(filepath, uuid) {
 	let session = bghttp.session("image-upload");
 	let imageName = this.extractImageName(filepath);
 
@@ -32,8 +32,7 @@ export class UploadService {
 		},
 		description: "{ 'uploading': " + imageName + " }"
 	};
-	console.log("aici");
-	request.headers['uuid'] = "itworks"; // replace with uuid;
+	request.headers['uuid'] = uuid;
 	let task = session.uploadFile(filepath, request);
 	task.on("complete", (event) => { 
 		console.log("complete");

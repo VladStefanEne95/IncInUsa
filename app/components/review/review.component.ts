@@ -28,6 +28,7 @@ export class ReviewComponent implements OnInit {
 	bankAccount :string;
 	emoji :string;
 	payment :number;
+	firstDirector :boolean;
 
     constructor(private page: Page, private router: Router) {
 		page.actionBarHidden = true;
@@ -58,11 +59,21 @@ export class ReviewComponent implements OnInit {
 		
 		if (this.directors)
 			this.directorsArr = JSON.parse(this.directors);
+		
+		if (Object.keys(this.directorsArr[0]).length === 0 && this.directorsArr[0].constructor === Object) {
+			this.firstDirector = false;
+		} else {
+			this.firstDirector = true;
+		}
 
 		this.payment = parseInt(appSettings.getString("payment", 0)) + 595;
 	}
 
 	next() {
+		if (this.directorsArr.length == 1 && Object.keys(this.directorsArr[0]).length === 0 && this.directorsArr[0].constructor === Object) {
+			alert("You need to add at least one director");
+			return;
+		}
 		this.router.navigate(["/payment"]);
 	}
 	addDirector() {

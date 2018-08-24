@@ -30,8 +30,20 @@ export class FinishComponent implements OnInit {
 		appSettings.setString("postal", "");
 		appSettings.setString("country", "");
 		appSettings.setString("state", "");
+		appSettings.setString("emoji", "");
 		appSettings.setString("directors", "");
-	
+
+		appSettings.setString("billing", "");
+		appSettings.setString("billingfirstName", "");
+		appSettings.setString("billinglastName", ""), 
+		appSettings.setString("billingemail", "");
+		appSettings.setString("billingal1", "");
+		appSettings.setString("billingal2", "");
+		appSettings.setString("billingcity", "");
+		appSettings.setString("billingpostal", "");
+		appSettings.setString("billingcountry", "");
+		appSettings.setString("billingstate", "");
+		appSettings.setString("billingemoji", "");	
 	}
 	public viewAppStatus() {
 		this.router.navigate(["/manage"]);

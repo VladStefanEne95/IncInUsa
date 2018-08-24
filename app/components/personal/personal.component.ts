@@ -116,13 +116,14 @@ export class PersonalComponent implements OnInit {
 					"city": this.city,
 					"postal": this.postal,
 					"country": this.country,
+					"emoji": this.emoji,
 					"state": this.state
 			}]));
 		} else {
 			appSettings.setString("directors", JSON.stringify([{}]));
 		}
 
-		this.router.navigate(["/review"]);
+		this.router.navigate(["/fileupload"]);
 	}
 
 

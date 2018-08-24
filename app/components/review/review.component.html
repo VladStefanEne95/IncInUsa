@@ -28,12 +28,14 @@
 						</GridLayout>
 
 					<Label text="List of Directors" class="h2" style="margin-left:20; margin-top:50"></Label>
-					<GridLayout *ngFor="let dir of directorsArr; let i = index" rows="*" columns="50,*,15,auto" class="grid-form">
+					<ng-container *ngFor="let dir of directorsArr; let i = index">
+						<GridLayout *ngIf="i != 0 || firstDirector == true" rows="*" columns="50,*,15,auto" class="grid-form">
 							<Image class="form-label" row="0" col="0" src="~/images/avatar.png"></Image>
 							<Label class="form-label" style="margin-left:5; vertical-align:center;" row="0" col="1" text="{{ dir.firstName }} {{ dir.lastName }}" ></Label>
 							<Image style="vertical-align:center" row="0" col="2" src="~/images/edit.png"></Image>
 							<Label class="form-text h3" style="color:#0675e1; margin-right:30;margin-left:5; vertical-align:center;" (tap)="editDirector(i)" row="0" col="3" text="EDIT"></Label>
-					</GridLayout>
+						</GridLayout>
+					</ng-container>
 					<Button text="Add a Director" style="margin-top:30" class="blue-button"  (tap)="addDirector()"  ></Button>
 
 				<Label text="Personal Information" class="h2" style="margin-left:20;"></Label>
@@ -72,7 +74,7 @@
 			
 						<GridLayout rows="*" columns="*,*" class="grid-form">
 								<Label class="form-label" row="0" col="0" text="Country" ></Label>
-								<Label class="form-text h3" row="0" col="1" [text]="country"></Label>
+								<Label class="form-text h3" row="0" col="1" text="{{emoji}} {{country}}"></Label>
 						</GridLayout>
 			
 						<GridLayout rows="*" columns="*,*" class="grid-form">

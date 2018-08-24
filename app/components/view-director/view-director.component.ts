@@ -27,6 +27,7 @@ export class ViewDirectorComponent implements OnInit {
 	companyName: string;
 	companyType :string;
 	directors :any;
+	emoji :string;
 	directorsArr :Array<any>;
 
     constructor(private page: Page, private router: Router, private _Activatedroute:ActivatedRoute, private StartService: StartService) {
@@ -51,6 +52,7 @@ export class ViewDirectorComponent implements OnInit {
 				this.city = this.directorsArr[this.id].city;
 				this.postal = this.directorsArr[this.id].postal;
 				this.country = this.directorsArr[this.id].country;
+				this.emoji = this.directorsArr[this.id].emoji;
 				this.state = this.directorsArr[this.id].state;
 			},
 			error => console.log(error)

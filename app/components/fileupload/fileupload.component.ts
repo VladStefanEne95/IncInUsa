@@ -34,13 +34,15 @@ export class FileuploadComponent implements OnInit {
 	docType :string;
 	docNumber :number;
 	uuid :string;
+	uploadPath :string;
 
-	constructor(private page: Page, private UploadService: UploadService) {
+	constructor(private page: Page, private UploadService: UploadService, private router: Router) {
 		page.actionBarHidden = true;
 		this.items = [];
 	}
 
     ngOnInit(): void {
+		this.uploadPath = "";
 		this.page.addCss("#step2 {visibility: collapsed}");
 		this.items.push("Second");
 		this.items.push("Passaport");
@@ -97,7 +99,8 @@ export class FileuploadComponent implements OnInit {
 			this.imageSrc = selection.length > 0 ? selection[0] : null;
 			this.imageSelected = true;
 			//check for ios
-			this.upload(this.imageSrc['_android']);
+			//this.upload(this.imageSrc['_android']);
+			this.uploadPath = this.imageSrc['_android'];
         }).catch(function (e) {
             console.log(e);
         });
@@ -106,18 +109,25 @@ export class FileuploadComponent implements OnInit {
 	public takePicture() {
 		Camera.takePicture({saveToGallery: false, width: 320, height: 240 }).then(picture => {
 			let folder = FileSystem.knownFolders.documents();
-			let path = FileSystem.path.join(folder.path, (new Date()) + ".png");
+			let path = FileSystem.path.join(folder.path, (".png"));
 			imageSourceModule.fromAsset(picture)
 			.then(imageSource => {
 				 let saved = imageSource.saveToFile(path, "png");
 				 this.imageSelected = true;
 				 this.imageSrc = path;
 				 this.imageSelected = true;
-				 this.upload(path);
+				 //this.upload(path);
+				 this.uploadPath = path;
 			 });
 		});
 	}
-	public upload(filepath: string) {
-		this.UploadService.uploadImage(filepath);
+
+	public next() {
+		if (this.docNumber && this.uploadPath != "") {
+			this.UploadService.uploadImage(this.uploadPath, this.uuid);
+			this.router.navigate(["/review"]);
+		} else {
+			alert("Please upload a photo and type in the document number");
+		}
 	}
 }

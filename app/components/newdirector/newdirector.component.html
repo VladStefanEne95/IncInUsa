@@ -42,24 +42,30 @@
 
 			<GridLayout rows="*" columns="*,*" class="grid-form">
 					<Label class="form-label" row="0" col="0" text="Postal Code" ></Label>
-					<TextField class="form-text" row="0" col="1" [(ngModel)]="postal" hint="Enter postal code"  keyboardType="number"
+					<TextField class="form-text" row="0" col="1" [(ngModel)]="postal" hint="Enter postal code"
 					autocorrect="false" ></TextField>
 			</GridLayout>
 
 			<GridLayout rows="*" columns="*,*" class="grid-form">
 					<Label class="form-label" row="0" col="0" text="Country" ></Label>
-					<TextField class="form-text" row="0" col="1" [(ngModel)]="country" hint="Enter country" 
-					autocorrect="false" ></TextField>
+					<Label *ngIf="country=='Enter country'"  class="form-text" style="color:#999" textWrap="true" (tap)="showPicker()" row="0" col="1" text="{{emoji}} {{country}}"  
+					autocorrect="false" ></Label>
+					<Label *ngIf="country!='Enter country'"  class="form-text" textWrap="true" (tap)="showPicker()" row="0" col="1" text="{{emoji}} {{country}}"  
+					autocorrect="false" ></Label>
 			</GridLayout>
 
 			<GridLayout rows="*" columns="*,*" class="grid-form">
 					<Label class="form-label" row="0" col="0" text="State" ></Label>
-					<TextField class="form-text" row="0" col="1" [(ngModel)]="state" hint="Enter state" 
+					<TextField *ngIf="country!='United States'" class="form-text" row="0" col="1" [(ngModel)]="state" hint="Enter state" 
 					autocorrect="false" ></TextField>
+					<Label *ngIf="country=='United States' && state==''" (tap)="showPickerStates()" class="form-text" style="color:#999;" row="0" col="1" text="Enter state" 
+					autocorrect="false" ></Label>
+					<Label *ngIf="country=='United States'" (tap)="showPickerStates()" class="form-text" row="0" col="1" text="{{state}}" 
+					autocorrect="false" ></Label>
 			</GridLayout>
 	
 			<Button text="NEXT" class="green-button" (tap)="addDirector()"  ></Button>
 		</StackLayout>
 	</StackLayout>
-
 </ScrollView>
+<FilterableListpicker #myfilter blur="dark" hintText="FIlter" [source]="countryList" (canceled)="cancelFilterableList($event)" (itemTapped)="itemTapped($event)"></FilterableListpicker>

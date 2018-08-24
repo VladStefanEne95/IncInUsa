@@ -245,58 +245,63 @@ export class PaymentComponent implements OnInit {
 
 	submit(args: EventData): void {
 
-		if (this.FirstCheckBox) {
-			if (!this.FirstCheckBox.nativeElement.checked && this.billing == "") {
-				this.router.navigate(["/billing"]);
-			} 
-			else if (this.FirstCheckBox.nativeElement.checked) {
-				const stripe = new Stripe('pk_test_JAgczktWX8jchji0bgHIHjOe');
+		// if (this.FirstCheckBox) {
+		// 	if (!this.FirstCheckBox.nativeElement.checked && this.billing == "") {
+		// 		this.router.navigate(["/billing"]);
+		// 	} 
+		// 	else if (this.FirstCheckBox.nativeElement.checked) {
+		// 		const stripe = new Stripe('pk_test_JAgczktWX8jchji0bgHIHjOe');
 				
-				const cc:Card = new Card(this.cardNumber.replace(/\ /g, ''), this.cardMonth, this.cardYear, this.cardCvc);
-					stripe.createToken(cc.card,(error,token)=>{
-					if (!error) {
-						this.PaymentService.submitToken(token.getId(), this.payment).subscribe(
-						response => alert("Payment done"),
-						error => (alert("there was an error, please try again")));	
-						this.IncorporationService.submitBilling(this.firstName, this.lastName, this.email, this.al1, this.al2, this.city, this.postal, this.country, this.state, this.uuid, this.emoji)
-						.subscribe(
-							response => console.log(response),
-							error => console.log(error)
-						);
-						this.IncorporationService.submitData(this.firstName, this.lastName, this.email, this.al1, this.al2, this.city, this.postal, this.country, this.state, this.directors, this.uuid, this.companyName, this.companyType, this.emoji)
-						.subscribe(
-							response => console.log(response),
-							error => console.log(error)
-						);
-					} else {
-						alert("incorect card data");
-					}
-				});
-			}
-		} else {
-			const stripe = new Stripe('pk_test_JAgczktWX8jchji0bgHIHjOe');
+		// 		const cc:Card = new Card(this.cardNumber.replace(/\ /g, ''), this.cardMonth, this.cardYear, this.cardCvc);
+		// 			stripe.createToken(cc.card,(error,token)=>{
+		// 			if (!error) {
+		// 				this.PaymentService.submitToken(token.getId(), this.payment).subscribe(
+		// 				response => alert("Payment done"),
+		// 				error => (alert("there was an error, please try again")));	
+		// 				this.IncorporationService.submitBilling(this.firstName, this.lastName, this.email, this.al1, this.al2, this.city, this.postal, this.country, this.state, this.uuid, this.emoji)
+		// 				.subscribe(
+		// 					response => console.log(response),
+		// 					error => console.log(error)
+		// 				);
+		// 				this.IncorporationService.submitData(this.firstName, this.lastName, this.email, this.al1, this.al2, this.city, this.postal, this.country, this.state, this.directors, this.uuid, this.companyName, this.companyType, this.emoji)
+		// 				.subscribe(
+		// 					response => console.log(response),
+		// 					error => console.log(error)
+		// 				);
+		// 			} else {
+		// 				alert("incorect card data");
+		// 			}
+		// 		});
+		// 	}
+		// } else {
+		// 	const stripe = new Stripe('pk_test_JAgczktWX8jchji0bgHIHjOe');
 			
-			const cc:Card = new Card(this.cardNumber.replace(/\ /g, ''), this.cardMonth, this.cardYear, this.cardCvc);
-				stripe.createToken(cc.card,(error,token)=>{
-					if (!error) {
-						this.PaymentService.submitToken(token.getId(), this.payment).subscribe(
-						response => alert("Payment done"),
-						error => (alert("there was an error, please try again")))
-						this.IncorporationService.submitBilling(this.billingfirstName, this.billinglastName, this.billingemail, this.billingal1, this.billingal2, this.billingcity, this.billingpostal, this.billingcountry, this.billingstate, this.uuid, this.billingemoji)
-						.subscribe(
-							response => console.log(response),
-							error => console.log(error)
-						);
-						this.IncorporationService.submitData(this.firstName, this.lastName, this.email, this.al1, this.al2, this.city, this.postal, this.country, this.state, this.directors, this.uuid, this.companyName, this.companyType, this.emoji)
-						.subscribe(
-							response => console.log(response),
-							error => console.log(error)
-						);
-					} else {
-						alert("incorect card data");
-					}
-				});
+		// 	const cc:Card = new Card(this.cardNumber.replace(/\ /g, ''), this.cardMonth, this.cardYear, this.cardCvc);
+		// 		stripe.createToken(cc.card,(error,token)=>{
+		// 			if (!error) {
+		// 				this.PaymentService.submitToken(token.getId(), this.payment).subscribe(
+		// 				response => alert("Payment done"),
+		// 				error => (alert("there was an error, please try again")))
+		// 				this.IncorporationService.submitBilling(this.billingfirstName, this.billinglastName, this.billingemail, this.billingal1, this.billingal2, this.billingcity, this.billingpostal, this.billingcountry, this.billingstate, this.uuid, this.billingemoji)
+		// 				.subscribe(
+		// 					response => console.log(response),
+		// 					error => console.log(error)
+		// 				);
+		// 				this.IncorporationService.submitData(this.firstName, this.lastName, this.email, this.al1, this.al2, this.city, this.postal, this.country, this.state, this.directors, this.uuid, this.companyName, this.companyType, this.emoji)
+		// 				.subscribe(
+		// 					response => console.log(response),
+		// 					error => console.log(error)
+		// 				);
+		// 			} else {
+		// 				alert("incorect card data");
+		// 			}
+		// 		});
 			
-		}
+		// }
+								this.IncorporationService.submitData(this.firstName, this.lastName, this.email, this.al1, this.al2, this.city, this.postal, this.country, this.state, this.directors, this.uuid, this.companyName, this.companyType, this.emoji)
+						.subscribe(
+							response => console.log(response),
+							error => console.log(error)
+						);
 	}
 }
