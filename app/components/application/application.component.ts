@@ -25,13 +25,14 @@ export class ApplicationComponent implements OnInit {
 	al1 :string;
 	al2 :string;
 	city :string;
-	postal :number;
+	postal :string;
 	country :string;
 	state :string;
 	companyName: string;
 	companyType :string;
 	directors :string;
 	uuid :string;
+	emoji :string;
 	companyUuid :string;
 	directorsArr :any;
 
@@ -60,6 +61,7 @@ export class ApplicationComponent implements OnInit {
 				this.postal = response['incorporation'][0].postal;
 				this.country = response['incorporation'][0].country;
 				this.state = response['incorporation'][0].state;
+				this.emoji = response['incorporation'][0].emoji;
 				this.directors = response['incorporation'][0].directors;
 				this.directorsArr = JSON.parse(this.directors);
 			},

@@ -6,7 +6,7 @@
 	<StackLayout orientation="vertical">
 			<StackLayout>
 					<GridLayout rows="*" columns="50,*, 120" class="topmenu-grid topbar-gradient">
-						<Label class="topmenu-back" row="0" col="0" text="<" ></Label>
+						<Label [nsRouterLink]="['/status/',uuid]" class="topmenu-back" row="0" col="0" text="<" ></Label>
 						<StackLayout row="0" col="1">
 							<Label class="topmenu-step" text="Manage Company" ></Label>
 							<Label class="topmenu-title" text="Application details" ></Label>
@@ -68,7 +68,7 @@
 		
 					<GridLayout rows="*" columns="*,*" class="grid-form">
 							<Label class="form-label" row="0" col="0" text="Country" ></Label>
-							<Label class="form-text h3" row="0" col="1" [text]="country"></Label>
+							<Label class="form-text h3" row="0" col="1" text="{{country}} {{emoji}}"></Label>
 					</GridLayout>
 		
 					<GridLayout rows="*" columns="*,*" class="grid-form">

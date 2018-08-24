@@ -5,7 +5,7 @@
 		<StackLayout>
 				<StackLayout>
 						<GridLayout rows="*" columns="50,*, 120" class="topmenu-grid">
-							<Label class="topmenu-back" row="0" col="0" text="<" ></Label>
+							<Label [nsRouterLink]="['/details']" class="topmenu-back" row="0" col="0" text="<" ></Label>
 							<StackLayout row="0" col="1">
 								<Label class="topmenu-step" text="STEP 2/6" ></Label>
 								<Label class="topmenu-title" text="Bank account" ></Label>
@@ -29,7 +29,6 @@
 				</StackLayout>
 			</GridLayout>
 
-			<Label text="How do I know which one to choose?" class="blue-text" (tap)="buttonTapes()"></Label>
 
 			<Button text="NEXT" class="green-button" (tap)="nextStep()" ></Button>
 		</StackLayout>

@@ -25,7 +25,6 @@ export class BankComponent implements OnInit {
     }
 
     ngOnInit(): void {
-		console.log(appSettings.getString("bankAccount", ""));
 		this.bankAccount = (appSettings.getString("bankAccount", "") == 'true');
 		if (this.bankAccount == true) {
 			this.FirstCheckBox.nativeElement.checked = true;

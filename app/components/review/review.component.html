@@ -3,7 +3,7 @@
 		<StackLayout orientation="vertical">
 				<StackLayout>
 						<GridLayout rows="*" columns="50,*, 120" class="topmenu-grid">
-							<Label class="topmenu-back" row="0" col="0" text="<" ></Label>
+							<Label [nsRouterLink]="['/fileupload']" class="topmenu-back" row="0" col="0" text="<" ></Label>
 							<StackLayout row="0" col="1">
 								<Label class="topmenu-step" text="STEP 5/6" ></Label>
 								<Label class="topmenu-title" text="Review order" ></Label>

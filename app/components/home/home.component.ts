@@ -19,25 +19,18 @@ export class HomeComponent implements OnInit {
 	uuidString :any;
 
     constructor(private page: Page, private router: Router, private StartService: StartService) {
-		// Use the component constructor to inject providers.
 		page.actionBarHidden = true;
 		this.page.addCss("#step3 {visibility: collapsed}");
     }
 
     ngOnInit(): void {
-		// Init your component properties here.
 		this.companyUuid = appSettings.getString("uuid", "");
+		console.log(this.companyUuid);
 		this.uuidString = appSettings.getString("uuidString", "");
 		if (this.companyUuid == "")
 			this.viewType = 1;
 		else
 			this.viewType = 2;
-		this.StartService.refreshStatus(this.companyUuid).subscribe(
-			response => {
-					appSettings.setString("status", response['incorporation'][0].status)
-				},
-			error => console.log(error)
-		);
 	}
 
 	public generateUuid() {
@@ -71,8 +64,7 @@ export class HomeComponent implements OnInit {
 		this.router.navigate(["/details"]);
 	}
 	
-	public start(){
-
+	public start() {
 		let uuid = this.generateUuid();
 		let uuidArr = [];
 		uuidArr = this.uuidString.split(",");
@@ -90,7 +82,21 @@ export class HomeComponent implements OnInit {
 		appSettings.setString("city", "");
 		appSettings.setString ("postal", "");
 		appSettings.setString("country", "");
+		appSettings.setString("emoji", "");
 		appSettings.setString("state", "");
+
+		appSettings.setString("billing", "");
+		appSettings.setString("billingfirstName", "");
+		appSettings.setString("billinglastName", "");
+		appSettings.setString("billingemail", "");
+		appSettings.setString("billingal1", "");
+		appSettings.setString("billingal2", "");
+		appSettings.setString("billingcity", "");
+		appSettings.setString ("billingpostal", "");
+		appSettings.setString("billingcountry", "");
+		appSettings.setString("billingemoji", "");
+		appSettings.setString("billingstate", "");
+
 		appSettings.setString("addToDirectors", "");
 		this.router.navigate(["/details"]);
 	}

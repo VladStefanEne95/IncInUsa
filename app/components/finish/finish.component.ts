@@ -27,7 +27,7 @@ export class FinishComponent implements OnInit {
 		appSettings.setString("al1", "");
 		appSettings.setString("al2", "");
 		appSettings.setString("city", "");
-		appSettings.setString("postal", 0);
+		appSettings.setString("postal", "");
 		appSettings.setString("country", "");
 		appSettings.setString("state", "");
 		appSettings.setString("directors", "");

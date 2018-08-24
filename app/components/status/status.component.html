@@ -2,7 +2,7 @@
 	<StackLayout orientation="vertical">
 			<StackLayout>
 				<GridLayout rows="*" columns="50,*, 100" class="topmenu-grid topbar-gradient" style="margin-bottom:0">
-					<Label class="topmenu-back" row="0" col="0" text="<" ></Label>
+					<Label [nsRouterLink]="['/manage']" class="topmenu-back" row="0" col="0" text="<" ></Label>
 					<StackLayout row="0" col="1">
 						<Label class="topmenu-step" text="Manage Company" ></Label>
 						<Label class="topmenu-title" text="{{companyName}} {{companyType}}" ></Label>

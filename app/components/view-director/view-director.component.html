@@ -3,8 +3,8 @@
 		<StackLayout orientation="vertical">
 			<StackLayout>
 				<GridLayout rows="*" columns="40,*" class="edit-back">
-					<Label style="margin-left:20; font-size:22;" row="0" col="0" text="<" ></Label>
-					<Label style="text-align:left; font-size:22;" row="0" col="1" text="Back" ></Label>
+					<Label [nsRouterLink]="['/application/',uuid]" style="margin-left:20; font-size:22;" row="0" col="0" text="<" ></Label>
+					<Label [nsRouterLink]="['/application/',uuid]" style="text-align:left; font-size:22;" row="0" col="1" text="Back" ></Label>
 				</GridLayout>
 			</StackLayout>
 			<Label text="Director" class="h2" style="margin-left:20;"></Label>	

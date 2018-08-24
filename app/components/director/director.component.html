@@ -2,7 +2,7 @@
 <ScrollView>
 		<StackLayout orientation="vertical">
 			<StackLayout>
-				<GridLayout rows="*" columns="40,*" class="edit-back">
+				<GridLayout [nsRouterLink]="['/review']" rows="*" columns="40,*" class="edit-back">
 					<Label style="margin-left:20; font-size:22;" row="0" col="0" text="<" ></Label>
 					<Label style="text-align:left; font-size:22;" row="0" col="1" text="Back" ></Label>
 				</GridLayout>
@@ -49,7 +49,9 @@
 	
 				<GridLayout rows="*" columns="*,*" class="grid-form">
 						<Label class="form-label" row="0" col="0" text="Country" ></Label>
-						<Label class="form-text" textWrap="true" (tap)="showPicker()" row="0" col="1" text="{{emoji}} {{country}}"  
+						<Label *ngIf="country=='Enter country'"  class="form-text" style="color:#999" textWrap="true" (tap)="showPicker()" row="0" col="1" text="{{emoji}} {{country}}"  
+						autocorrect="false" ></Label>
+						<Label *ngIf="country!='Enter country'"  class="form-text" textWrap="true" (tap)="showPicker()" row="0" col="1" text="{{emoji}} {{country}}"  
 						autocorrect="false" ></Label>
 				</GridLayout>
 	
@@ -57,7 +59,7 @@
 						<Label class="form-label" row="0" col="0" text="State" ></Label>
 						<TextField *ngIf="country!='United States'" class="form-text" row="0" col="1" [(ngModel)]="state" hint="Enter state" 
 						autocorrect="false" ></TextField>
-						<Label *ngIf="country=='United States' && state==''" (tap)="showPickerStates()" class="form-text" row="0" col="1" text="Enter state" 
+						<Label *ngIf="country=='United States' && state==''" (tap)="showPickerStates()" class="form-text" style="color:#999;" row="0" col="1" text="Enter state" 
 						autocorrect="false" ></Label>
 						<Label *ngIf="country=='United States'" (tap)="showPickerStates()" class="form-text" row="0" col="1" text="{{state}}" 
 						autocorrect="false" ></Label>

@@ -35,7 +35,7 @@ export class PaymentComponent implements OnInit {
 	al1 :string;
 	al2 :string;
 	city :string;
-	postal :number;
+	postal :string;
 	country :string;
 	state :string;
 	companyName: string;
@@ -44,12 +44,25 @@ export class PaymentComponent implements OnInit {
 	uuid :string;
 	payment :number;
 	lastPosition :number;
+	emoji :string;
+	billing :string;
+
+	billingfirstName :string;
+	billinglastName :string;
+	billingemail :string;
+	billingal1 :string;
+	billingal2 :string;
+	billingcity :string;
+	billingpostal :string;
+	billingcountry :string;
+	billingemoji :string;
+	billingstate :string;
 
 	lastCardNumber :string;
 
 	@ViewChild("card") card: ElementRef;
 	@ViewChild("owner") owner: ElementRef;
-	@ViewChild("cvc") cvc: ElementRef;
+	@ViewChild("cvc") cvcId: ElementRef;
 	@ViewChild("cardYearId") cy: ElementRef;
 	@ViewChild("cardMonthId") cm: ElementRef;
 	@ViewChild("fullcard") fc: ElementRef;
@@ -57,13 +70,13 @@ export class PaymentComponent implements OnInit {
 	@ViewChild("card1") card1: ElementRef;
 	@ViewChild("cardNr") cardNr: ElementRef;
 	@ViewChild("CB1") FirstCheckBox: ElementRef;
+	@ViewChild("dummy") dummy: ElementRef;
 
 	constructor(private page: Page, public PaymentService: PaymentService, public IncorporationService: IncorporationService, private router: Router) {
 		page.actionBarHidden = true;
 	}
 
 	ngOnInit(): void {
-		// Init your component properties here.
 		this.companyName = appSettings.getString("companyName", "");
 		this.companyType = appSettings.getString("companyType", "");
 		this.firstName = appSettings.getString("firstName", "");
@@ -73,12 +86,29 @@ export class PaymentComponent implements OnInit {
 		this.al1 = appSettings.getString("al1", "");
 		this.al2 = appSettings.getString("al2", "");
 		this.city = appSettings.getString("city", "");
-		this.postal = appSettings.getString("postal", 0);
+		this.postal = appSettings.getString("postal", "");
 		this.country = appSettings.getString("country", "");
 		this.state = appSettings.getString("state", "");
 		this.directors = appSettings.getString("directors", "");
+		this.billing = appSettings.getString("billing", "");
+		this.emoji = appSettings.getString("emoji", "");
 		this.payment = parseInt(appSettings.getString("payment", 0)) + 595;
 		this.page.addCss("#minicard {visibility: collapsed}");
+		console.log(this.billing);
+
+		if (this.billing != "") {
+			this.billing = appSettings.getString("billing","")
+			this.billingfirstName = appSettings.getString("billingfirstName", "");
+			this.billinglastName = appSettings.getString("billinglastName", "");
+			this.billingemail = appSettings.getString("billingemail", ""); 
+			this.billingal1 = appSettings.getString("billingal1","");
+			this.billingal2 = appSettings.getString("billingal2","");
+			this.billingcity = appSettings.getString("billingcity", "");
+			this.billingpostal = appSettings.getString("billingpostal", "");
+			this.billingcountry = appSettings.getString("billingcountry", "");
+			this.billingemoji = appSettings.getString("billingemoji", "");
+			this.billingstate = appSettings.getString("billingstate", "");
+		}
 		
 		this.oldValueLength = 0;
 		this.lastCardNumber = "";
@@ -181,14 +211,14 @@ export class PaymentComponent implements OnInit {
 	yearChanged(value) {
 		if (value.length == 2) {
 			this.cardYear = value;
-			this.cvc.nativeElement.focus();
+			this.cvcId.nativeElement.focus();
 		}
 		if (value.length > 2) {
 			this.cardYear = value.substr(0, 2);
 			this.cy.nativeElement.text = this.cardYear;
-			this.cvc.nativeElement.focus();
-			this.cvc.nativeElement.selectionStart = this.cvc.nativeElement.text.length;
-			this.cvc.nativeElement.selectionEnd = this.cvc.nativeElement.text.length;
+			this.cvcId.nativeElement.focus();
+			this.cvcId.nativeElement.selectionStart = this.cvcId.nativeElement.text.length;
+			this.cvcId.nativeElement.selectionEnd = this.cvcId.nativeElement.text.length;
 		}
 		if (value.length == 0) {
 			this.cm.nativeElement.focus();
@@ -197,33 +227,76 @@ export class PaymentComponent implements OnInit {
 		}
 	}
 
+	
+	cvcChanged(value) {
+		if (value.length == 3) {
+			this.cardCvc = value;
+		} else if (value.length > 3) {
+			value = value.substr(0, 3);
+			this.cardCvc = value;
+			this.cvcId.nativeElement.text = value;
+		}
+	}
+
+	editBilling() {
+		this.router.navigate(["/billing"]);
+	}
+
 
 	submit(args: EventData): void {
 
-	//	let cardView = <CreditCardView>this.card.nativeElement;
-	//	let card = cardView.card;
-		const stripe = new Stripe('pk_test_JAgczktWX8jchji0bgHIHjOe');
-		var value = appSettings.getString("stringKey", "No string value");
-		
-
-
-	//	const cc:Card = new Card(this.cardNumber.replace(/\ /g, ''), this.cardMonth, this.cardYear, this.cardCvc);
-			// stripe.createToken(cc.card,(error,token)=>{
-			// if (!error) {
-			// 	console.log(token.getId());
-			// 	console.log(token.getCard());
-			// 	this.PaymentService.submitToken(token.getId(), this.payment).subscribe(
-			// 	response => alert("Payment done"),
-			// 	error => (alert("there was an error, please try again")))	
-
-			// } else {
-			// 	alert("incorect card data");
-			// }
-			// });
-			this.IncorporationService.submitData(this.firstName, this.lastName, this.email, this.al1, this.al2, this.city, this.postal, this.country, this.state, this.directors, this.uuid, this.companyName, this.companyType)
-			.subscribe(
-				response => console.log(response),
-				error => console.log(error)
-			);
+		if (this.FirstCheckBox) {
+			if (!this.FirstCheckBox.nativeElement.checked && this.billing == "") {
+				this.router.navigate(["/billing"]);
+			} 
+			else if (this.FirstCheckBox.nativeElement.checked) {
+				const stripe = new Stripe('pk_test_JAgczktWX8jchji0bgHIHjOe');
+				
+				const cc:Card = new Card(this.cardNumber.replace(/\ /g, ''), this.cardMonth, this.cardYear, this.cardCvc);
+					stripe.createToken(cc.card,(error,token)=>{
+					if (!error) {
+						this.PaymentService.submitToken(token.getId(), this.payment).subscribe(
+						response => alert("Payment done"),
+						error => (alert("there was an error, please try again")));	
+						this.IncorporationService.submitBilling(this.firstName, this.lastName, this.email, this.al1, this.al2, this.city, this.postal, this.country, this.state, this.uuid, this.emoji)
+						.subscribe(
+							response => console.log(response),
+							error => console.log(error)
+						);
+						this.IncorporationService.submitData(this.firstName, this.lastName, this.email, this.al1, this.al2, this.city, this.postal, this.country, this.state, this.directors, this.uuid, this.companyName, this.companyType, this.emoji)
+						.subscribe(
+							response => console.log(response),
+							error => console.log(error)
+						);
+					} else {
+						alert("incorect card data");
+					}
+				});
+			}
+		} else {
+			const stripe = new Stripe('pk_test_JAgczktWX8jchji0bgHIHjOe');
+			
+			const cc:Card = new Card(this.cardNumber.replace(/\ /g, ''), this.cardMonth, this.cardYear, this.cardCvc);
+				stripe.createToken(cc.card,(error,token)=>{
+					if (!error) {
+						this.PaymentService.submitToken(token.getId(), this.payment).subscribe(
+						response => alert("Payment done"),
+						error => (alert("there was an error, please try again")))
+						this.IncorporationService.submitBilling(this.billingfirstName, this.billinglastName, this.billingemail, this.billingal1, this.billingal2, this.billingcity, this.billingpostal, this.billingcountry, this.billingstate, this.uuid, this.billingemoji)
+						.subscribe(
+							response => console.log(response),
+							error => console.log(error)
+						);
+						this.IncorporationService.submitData(this.firstName, this.lastName, this.email, this.al1, this.al2, this.city, this.postal, this.country, this.state, this.directors, this.uuid, this.companyName, this.companyType, this.emoji)
+						.subscribe(
+							response => console.log(response),
+							error => console.log(error)
+						);
+					} else {
+						alert("incorect card data");
+					}
+				});
+			
+		}
 	}
 }

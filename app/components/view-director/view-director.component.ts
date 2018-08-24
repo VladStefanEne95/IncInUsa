@@ -21,7 +21,7 @@ export class ViewDirectorComponent implements OnInit {
 	al1 :string;
 	al2 :string;
 	city :string;
-	postal :number;
+	postal :string;
 	country :string;
 	state :string;
 	companyName: string;
@@ -35,7 +35,6 @@ export class ViewDirectorComponent implements OnInit {
     }
 
     ngOnInit(): void {
-		// Init your component properties here.
 		this.uuid = this._Activatedroute.snapshot.params['id'];
 		this.id = this._Activatedroute.snapshot.params['id2'];
 		this.directors = appSettings.getString("directors", "");

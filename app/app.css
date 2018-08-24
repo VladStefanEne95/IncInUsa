@@ -36,7 +36,8 @@ components that have the btn class name.
     border-bottom-color: white;
     vertical-align: top;
     padding-top: 0;
-    text-align: right;
+	text-align: right;
+	color: black;
     margin-right: 20;
     font-size: 16;
 }

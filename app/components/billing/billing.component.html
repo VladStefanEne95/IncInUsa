@@ -4,10 +4,10 @@
 			<StackLayout id="step2">
 					<StackLayout>
 							<GridLayout rows="*" columns="50,*, 120" class="topmenu-grid">
-								<Label [nsRouterLink]="['/bank']" class="topmenu-back" row="0" col="0" text="<" ></Label>
+								<Label [nsRouterLink]="['/payment']" class="topmenu-back" row="0" col="0" text="<" ></Label>
 								<StackLayout row="0" col="1">
-									<Label class="topmenu-step" text="STEP 3/6" ></Label>
-									<Label class="topmenu-title" text="Personal information" ></Label>
+									<Label class="topmenu-step" text="STEP 6/6" ></Label>
+									<Label class="topmenu-title" text="Billing information" ></Label>
 								</StackLayout>
 								<Image class="topmenu-logo" row="0" col="2" src="~/images/main-image.png"></Image>
 							</GridLayout>
@@ -67,12 +67,8 @@
 						autocorrect="false" ></Label>
 						<Label *ngIf="country=='United States'" (tap)="showPickerStates()" class="form-text" row="0" col="1" text="{{state}}" 
 						autocorrect="false" ></Label>
-				</GridLayout>
-				
-				
-				<CheckBox #CB1 id="CB1" text="Add me to the List of Directors of {{companyName}} {{companyType}}" row="0" col="0" class="radio-button"  ngDefaultControl></CheckBox>
-				<Label class="label-text" textWrap="true" text="You will be able to add more directors later."></Label>
-				<Button text="NEXT" class="green-button" (tap)="step3()"  ></Button>
+				</GridLayout>				
+				<Button text="DONE" class="green-button" (tap)="step3()"  ></Button>
 			</StackLayout>
 		</StackLayout>
 	</ScrollView>

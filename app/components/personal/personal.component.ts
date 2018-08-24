@@ -22,7 +22,7 @@ export class PersonalComponent implements OnInit {
 	al1 :string;
 	al2 :string;
 	city :string;
-	postal :number;
+	postal :string;
 	country :string;
 	emoji :string;
 	state :string;
@@ -40,9 +40,13 @@ export class PersonalComponent implements OnInit {
 	
 
     constructor( private page: Page, private router: Router) {
-		// Use the component constructor to inject providers.
 		page.actionBarHidden = true;
-    }
+	}
+	
+	isValidEmail() {
+		var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+		return re.test(this.email);
+   }
 
     ngOnInit(): void {
 		this.companyName = appSettings.getString("companyName", "");
@@ -53,9 +57,10 @@ export class PersonalComponent implements OnInit {
 		this.al1 = appSettings.getString("al1", "");
 		this.al2 = appSettings.getString("al2", "");
 		this.city = appSettings.getString("city", "");
-		this.postal = appSettings.getString("postal", 0);
+		this.postal = appSettings.getString("postal", "");
 		this.country = appSettings.getString("country", "");
 		this.state = appSettings.getString("state", "");
+		this.emoji = appSettings.getString("emoji", "");
 		this.FirstCheckBox.nativeElement.checked = "true";
 		let length = this.countryObj.length;
 		this.countryList = [];
@@ -72,26 +77,30 @@ export class PersonalComponent implements OnInit {
 
 
 	step3() {
-	
-		// if (this.firstName == "" ||
-		// 	this.lastName == "" ||
-		// 	this.email == "" ||
-		// 	this.al1 == "" ||
-		// 	this.al2 == "" ||
-		// 	this.city == "" ||
-		// 	this.postal == 0 ||
-		// 	this.country == "" ||
-		// 	this.state == "") {
-		// 		alert("please complete the entire form");
-		// 		return;
-		// 	}
+		if (!this.isValidEmail()) {
+			alert("Invalid Email");
+			return;
+		}
+		if (
+			this.firstName == "" 
+			|| this.lastName == "" 
+			|| this.al1 == "" 
+			|| this.city == "" 
+			|| this.postal == "" 
+			|| this.country == "" 
+			|| this.state == ""
+		) {
+			alert("Please complete the entire form");
+			return;
+		}
+
 		appSettings.setString("firstName", this.firstName);
 		appSettings.setString("lastName", this.lastName);
 		appSettings.setString("email", this.email);
 		appSettings.setString("al1", this.al1);
 		appSettings.setString("al2", this.al2);
 		appSettings.setString("city", this.city);
-		appSettings.setString ("postal", this.postal);
+		appSettings.setString("postal", this.postal);
 		appSettings.setString("country", this.country);
 		appSettings.setString("emoji", this.emoji);
 		appSettings.setString("state", this.state);

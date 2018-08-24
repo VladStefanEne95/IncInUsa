@@ -30,7 +30,7 @@ export class FileuploadComponent implements OnInit {
 	isSingleMode: boolean = true;
 	imageSelected: boolean = false;
     thumbSize: number = 80;
-	previewSize: number = 200;
+	previewSize: number = 250;
 	docType :string;
 	docNumber :number;
 	uuid :string;
@@ -61,16 +61,21 @@ export class FileuploadComponent implements OnInit {
 	}
 	
 	public showOptions() {
-		this.page.addCss("#step1 {visibility: collapsed}");
-		this.page.addCss("#step2 {visibility: visible}");
-		this.page.addCss(".hide-border {border-bottom-color: #dedede}");
+		dialogs.action({
+			message: "Upload ID",
+			cancelButtonText: "Cancel",
+			actions: ["Take Photo", "Chose from Library"]
+		}).then(result => {
+			if (result == "Take Photo"){
+				this.takePicture();
+			} else if(result == "Chose from Library"){
+				this.onSelectSingleTap();
+			}
+		});
 	}
 
 
 	public hideOptions() {
-		this.page.addCss("#step2 {visibility: collapsed}");
-		this.page.addCss("#step1 {visibility: visible}");
-		this.page.addCss(".hide-border {border-bottom-color: white}");
 	}
 	
     public onSelectSingleTap() {
@@ -92,7 +97,7 @@ export class FileuploadComponent implements OnInit {
 			this.imageSrc = selection.length > 0 ? selection[0] : null;
 			this.imageSelected = true;
 			//check for ios
-			this.upload("http://af2b4f6d.ngrok.io/upload", this.imageSrc['_android']);
+			this.upload(this.imageSrc['_android']);
         }).catch(function (e) {
             console.log(e);
         });
@@ -108,11 +113,11 @@ export class FileuploadComponent implements OnInit {
 				 this.imageSelected = true;
 				 this.imageSrc = path;
 				 this.imageSelected = true;
-				 this.upload("http://af2b4f6d.ngrok.io/upload", path);
+				 this.upload(path);
 			 });
 		});
 	}
-	public upload(destination: string, filepath: string) {
-		this.UploadService.uploadImage(destination, filepath);
+	public upload(filepath: string) {
+		this.UploadService.uploadImage(filepath);
 	}
 }

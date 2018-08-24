@@ -3,7 +3,7 @@
 		<StackLayout orientation="vertical">
 			<StackLayout>
 					<GridLayout rows="*" columns="50,*, 120" class="topmenu-grid">
-						<Label class="topmenu-back" row="0" col="0" text="<" ></Label>
+						<Label [nsRouterLink]="['/review']" class="topmenu-back" row="0" col="0" text="<" ></Label>
 						<StackLayout row="0" col="1">
 							<Label class="topmenu-step" text="STEP 6/6" ></Label>
 							<Label class="topmenu-title" text="Payment" ></Label>
@@ -44,8 +44,7 @@
 					</GridLayout>
 					<StackLayout row="0" col="2" class="card-number">
 						<GridLayout rows="*" columns="*,34">
-							<TextField #cvc row="0" col="0" class="form-text-left-payment" [(ngModel)]="cardCvc" hint="CVC"  keyboardType="number"
-							autocorrect="false" ></TextField>
+							<TextField #cvc row="0" col="0" class="form-text-left-payment" [ngModel]="cardCvc" (ngModelChange)='cvcChanged($event)' hint="CVC"  keyboardType="number"></TextField>
 							<Image class="card-icon" row="0" col="1" src="~/images/https.png"></Image>
 						</GridLayout>
 					</StackLayout>
@@ -54,9 +53,10 @@
 			<Label class="h-line"></Label>
 			<StackLayout class="my-container">
 					<Label text="Billing Info" class="card-title"></Label>
-					<CheckBox  text="Same as personal information for {{ firstName }} {{ lastName }}" class="radio-button-payment"  ngDefaultControl></CheckBox>
+					<CheckBox *ngIf="billing==''" #CB1 text="Same as personal information for {{ firstName }} {{ lastName }}"  class="radio-button-payment"  ngDefaultControl></CheckBox>
+					<Label *ngIf="billing!=''" (tap)="editBilling()" text="Billing for {{ billingfirstName }} {{ billinglastName }}"></Label>
 			</StackLayout>
 			<Label class="h-line"></Label>
-			<Button text="Pay ${{payment}}.00" class="black-button" (tap)="submit($event)"></Button>		
+			<Button #dummy text="Pay ${{payment}}.00" class="black-button" (tap)="submit($event)"></Button>		
 		</StackLayout>
 	</ScrollView>

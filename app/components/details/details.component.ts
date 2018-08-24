@@ -41,8 +41,13 @@ export class DetailsComponent implements OnInit {
 
 
 	public step3() {
-		if(this.companyName == "" || this.companyType == "") {
-			alert("please complete the form before proceeding");
+		if (this.companyName == "" || this.companyType == "" ) {
+			alert("Please complete the form before proceeding");
+			return;
+		}
+
+		if ( this.companyName.length < 3) {
+			alert("The company name should have at least 3 letters");
 			return;
 		}
 		appSettings.setString("companyName", this.companyName);
@@ -51,7 +56,7 @@ export class DetailsComponent implements OnInit {
 	}
 
 	public buttonTapes() {
-		alert("some text");
+		alert("Ask Andrei");
 	}
 	public firstCheckboxTap() {
 		this.FirstCheckBox.nativeElement.checked = true;

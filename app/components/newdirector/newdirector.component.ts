@@ -18,11 +18,12 @@ export class NewDirectorComponent implements OnInit {
 	al1 :string;
 	al2 :string;
 	city :string;
-	postal :number;
+	postal :string;
 	country :string;
 	state :string;
 	companyName: string;
 	companyType :string;
+	emoji :string;
 	directors :string;
 	directorsObj :any;
 	directorLength: number;
@@ -40,8 +41,29 @@ export class NewDirectorComponent implements OnInit {
 		this.directorsObj = JSON.parse(this.directors);
 		this.directorLength = this.directorsObj.length;
 	}
-	
-	public addDirector(){
+	isValidEmail() {
+		var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+		return re.test(this.email);
+   }
+
+	addDirector(){
+		if (!this.isValidEmail()) {
+			alert("Invalid Email");
+			return;
+		}
+		if (
+			this.firstName == "" 
+			|| this.lastName == "" 
+			|| this.al1 == "" 
+			|| this.city == "" 
+			|| this.postal == "" 
+			|| this.country == "" 
+			|| this.state == ""
+		) {
+			alert("Please complete the entire form");
+			return;
+		}
+
 		let auxObj = {
 			firstName: this.firstName,
 			lastName: this.lastName,
@@ -51,6 +73,7 @@ export class NewDirectorComponent implements OnInit {
 			city: this.city,
 			postal: this.postal,
 			country: this.country,
+			emoji: this.emoji,
 			state: this.state,
 		}
 		this.directorsObj.push(auxObj);

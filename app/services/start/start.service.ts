@@ -6,7 +6,7 @@ import { Observable } from "rxjs";
 @Injectable()
 export class StartService {
 
-  private submitUrl = "http://5066c173.ngrok.io/incorporation-data/refresh/";
+  private submitUrl = "http://7409d3fd.ngrok.io/incorporation-data/refresh/";
   
   constructor(private http: HttpClient, private router: Router) { } 
   

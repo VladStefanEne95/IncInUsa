@@ -8,7 +8,7 @@ import * as bghttp from "nativescript-background-http";
 @Injectable()
 export class UploadService {
 
-  private submitUrl = "http://bf18aabd.ngrok.io/incorporation-data/refresh/";
+  private submitUrl = "http://7409d3fd.ngrok.io/upload";
   
   constructor(private http: HttpClient, private router: Router) { }
  
@@ -20,12 +20,12 @@ export class UploadService {
 }
 
 
-  public uploadImage(destination, filepath) {
+  public uploadImage(filepath) {
 	let session = bghttp.session("image-upload");
 	let imageName = this.extractImageName(filepath);
 
 	var request = {
-		url: destination,
+		url: this.submitUrl,
 		method: "POST",
 		headers: {
 			"File-Name": imageName

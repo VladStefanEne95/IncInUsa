@@ -18,7 +18,7 @@ export class ReviewComponent implements OnInit {
 	al1 :string;
 	al2 :string;
 	city :string;
-	postal :number;
+	postal :string;
 	country :string;
 	state :string;
 	companyName: string;
@@ -26,11 +26,10 @@ export class ReviewComponent implements OnInit {
 	directors :string;
 	directorsArr :Array<any>;
 	bankAccount :string;
+	emoji :string;
 	payment :number;
 
-	//@ViewChild("step2") step2: ElementRef;
     constructor(private page: Page, private router: Router) {
-		// Use the component constructor to inject providers.
 		page.actionBarHidden = true;
 		this.page = page;
 		this.page.addCss("#step3 {visibility: collapsed}");
@@ -42,7 +41,6 @@ export class ReviewComponent implements OnInit {
 
 
     ngOnInit(): void {
-		// Init your component properties here.
 		this.companyName = appSettings.getString("companyName", "");
 		this.companyType = appSettings.getString("companyType", "");
 		this.firstName = appSettings.getString("firstName", "");
@@ -51,14 +49,16 @@ export class ReviewComponent implements OnInit {
 		this.al1 = appSettings.getString("al1", "");
 		this.al2 = appSettings.getString("al2", "");
 		this.city = appSettings.getString("city", "");
-		this.postal = appSettings.getString("postal", 0);
+		this.postal = appSettings.getString("postal", "");
 		this.country = appSettings.getString("country", "");
 		this.bankAccount = appSettings.getString("bankAccount", "");
 		this.state = appSettings.getString("state", "");
+		this.emoji = appSettings.getString("emoji", "");
 		this.directors = appSettings.getString("directors", "");
+		
 		if (this.directors)
 			this.directorsArr = JSON.parse(this.directors);
-		console.log(appSettings.getString("payment", 0));
+
 		this.payment = parseInt(appSettings.getString("payment", 0)) + 595;
 	}
 
